@@ -1,4 +1,4 @@
-<body>
+
     <br>
             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <ol class="carousel-indicators">
@@ -15,7 +15,8 @@
                     {{#each currentMovies}}
                     {{#if @first}}
                         <div class="carousel-item active">
-                            <img src={{Movie_Poster}} class="d-block w-10" alt="...">
+                            <a href="moviedetails/{{_id}}">
+                            <img src={{Movie_Poster}} class="d-block w-10" alt="..."></a>
                             <br><br><br><br>
                             <div class="carousel-caption">
                                 <h5>{{Movie_Name}}</h5>
@@ -24,7 +25,8 @@
                         </div>
                     {{else}}
                         <div class="carousel-item">
-                            <img src={{Movie_Poster}} class="d-block w-10" alt="...">
+                            <a href="moviedetails/{{_id}}">
+                            <img src={{Movie_Poster}} class="d-block w-10" alt="..."></a>
                             <br><br><br><br>
                             <div class="carousel-caption">
                                 <h5>{{Movie_Name}}</h5>
@@ -46,4 +48,3 @@
                 
             </div>
         
-</body>

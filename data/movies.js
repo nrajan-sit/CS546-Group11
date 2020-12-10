@@ -1,6 +1,7 @@
 const mongoCollections = require("../config/mongoCollections");
 const allMovies = mongoCollections.movies;
 
+// get single movie based on ID
 async function getMovie(movie) {
   const movieCollection = await allMovies();
 
@@ -14,6 +15,19 @@ async function getMovie(movie) {
   let newMovieId = ObjectId(movie);
 
   const movieID = await movieCollection.findOne({ _id: newMovieId }); //findOne({ Movie_Name: movie });
+
+  if (!movieID) throw "Movie not found..........";
+  return movieID;
+}
+
+// get single movie based on name  // need to test this 
+async function getMovieName(movieName) {
+  const movieCollection = await allMovies();
+
+  if (!movieName || (typeof movieName == "string" && movieName.trim().length == 0))
+    throw "Please enter a valid movie name";
+
+  const movieID = await movieCollection.findOne({ Movie_Name: movieName }); //findOne({ Movie_Name: movie });
 
   if (!movieID) throw "Movie not found..........";
   return movieID;
