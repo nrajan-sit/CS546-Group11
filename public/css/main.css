@@ -1,0 +1,129 @@
+/*************************************************************************
+
+                                Home Page
+
+/************************************************************************/
+
+/********************* Title **************************/
+.navbar-brand{
+  font-family: 'Rammetto One', cursive;
+  font-size: 50px;
+}
+
+/* .navbar{
+  background:linear-gradient(45deg,#ff8000, #dd4814, #77216f, #5e2750);
+  
+} */
+
+/*********** carousel movie things ************/
+/* Movie Poster Size */
+.carousel-inner img{
+  height: 444px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+/* Movie Name Under Movie Poster */
+.carousel-caption h5{
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  top: 28em;
+}
+
+/*************************************************************************
+
+                              Movie Details Page
+
+/************************************************************************/
+/****** Movie details page******/
+/* .singleMovieDetails{
+  text-align: center;
+} */
+
+.singleMovieDetails h5{
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* #CurrentPlayingMovie img{
+  height: 345px;
+  width: 233px;
+  align-items: center;
+}
+
+.MovieTitleFont{
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}
+
+#Comingsoon{
+  font-size: 80px;
+  text-align: center;
+} */
+
+/* Banner */
+/* nav{
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+} */
+
+/* main logo */
+/* nav h1 a{
+  text-decoration: none;
+  color:white;
+  font-family: 'Rammetto One', cursive;
+  font-size: 50px;
+  margin: 0px;
+  letter-spacing: 3px;
+} */
+
+/* tabs */
+/* nav ul{
+  color:white;
+  display: flex;  
+  justify-content: space-around;
+  width: 60%;
+} */
+
+/* nav ul a{
+  color: yellow;
+  font-family: 'comic sans';
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: bold;    top: 20px;
+} */
+
+/* Search bar icon*/
+/* nav ul div.SearchBar{
+    transform: translate(-40%,-50%); /*search bar position
+    background: rgba(0, 0, 0, 0.4);
+    height:35px;
+    position: fixed;
+    display: flex;
+    padding: 6px; 
+    width: 30%; 
+    border-radius: 10px;
+    top: 20px;
+    position: relative;
+} */
+
+/* nav ul div.SearchBar .SearchInput{
+    float:left;
+    height:17px;
+    padding: 6px; 
+    width: 85%; 
+    border-radius: 5px; 
+} */
+  
+  
+/* nav ul div.SearchBar img{
+  margin:1px;
+  width:55px;
+  border-radius: 5px; 
+  cursor: pointer;
+} */
