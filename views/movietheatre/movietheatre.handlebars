@@ -1,6 +1,18 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
+<br> <br>
+<h4 id="MovieTheatresList">Movie Theatres</h4>
+<br>
 
-        {{{body}}}
+<div class="movietheatrelist">
+<figure>
+        {{#each movieTheatreList}}
+        <blockquote class="blockquote">
+                <a href="movietheatredetails/{{_id}}"><p>{{Movie_Theatre_Name}}</p></a>
+        </blockquote>
+        <figcaption class="blockquote-footer">{{Address_Line_1}} {{Address_Line_2}} {{City}} {{State}} {{Zip}} 
+                {{!-- <cite title="Source Title">Source Title</cite> --}}
+        </figcaption>
+        <br>
+        {{/each}}
 
-</html> --}}
+</figure>
+</div>

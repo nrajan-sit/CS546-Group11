@@ -67,6 +67,38 @@
   margin-right: auto;
 }
 
+
+/*************************************************************************
+
+                              Movie Theatre Page
+
+/************************************************************************/
+/****** Movie details page******/
+
+.movietheatrelist{
+  text-align: center;
+}
+
+#MovieTheatresList{
+  font-size: 50px;
+  text-align: center;
+}
+
+/*************************************************************************
+
+                              Movie Theatre Details Page
+
+/************************************************************************/
+/****** Movie details page******/
+
+.singleMovieTheatreDetails h5{
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
 /* .singleMovieDetails row{
   float: right;
 } */
