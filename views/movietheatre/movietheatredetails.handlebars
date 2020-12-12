@@ -17,5 +17,17 @@
   
         </dl>
     </div>
-    {{movieTheatreShowtimeDetails}}
+
+    {{#each movieTheatreShowtimeDetails}}
+        {{!-- {{#notNull MovieDetails}} --}}
+
+            <h6>{{Movie_Name}}</h6>
+            <img src={{Movie_Poster}}>
+            {{#each MovieDetails}}
+                <p>{{Movie_Theatre_Name}}</p>
+                <p>{{Time}}</p>
+            {{/each}}
+        {{!-- {{/notNull}} --}}
+    {{/each}}
+
 </div>

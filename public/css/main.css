@@ -97,7 +97,10 @@
   text-align: center;
 }
 
-
+.singleMovieTheatreDetails img{
+  height: 444px;
+  width: 300px;
+}
 
 /* .singleMovieDetails row{
   float: right;

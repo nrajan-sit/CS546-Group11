@@ -1,7 +1,9 @@
 const mongoCollections = require("../config/mongoCollections");
-const { showtime } = require("../config/mongoCollections");
+// const showtime = require("../config/mongoCollections");
 const allMoviesTheatres = mongoCollections.movieTheatres;
 const allShowtimes = mongoCollections.showtime;
+const allMovies = mongoCollections.movies;
+
 
 // get single movie based on ID
 async function getMovieTheatre(movieTheatre) {
@@ -35,37 +37,68 @@ async function getMovieTheatreList() {
 
 // Currently playing movies
 async function getCurrentPlayingMoviesforMovieTheatre(movieTheatreID) {
-    const theatreID = getMovieTheatre(movieTheatreID);
+  // console.log("Inside getCurrentPlayingMoviesforMovieTheatre");
+  const theatreID = await getMovieTheatre(movieTheatreID);
+  // console.log("Theatres id yyoooo ",theatreID)
 
-  const movieCollection = await allMoviesTheatres();
+  const allMovieTheatres = await allMoviesTheatres();
   const showtimeCollection = await allShowtimes();
-//   const movieArray = await movieCollection.find({}).toArray();
-    const movieArray = await theatreID.aggregate([
-      {
-        $lookup: {
-          from: showtimeCollection,
-          localField: "_id",
-          foreignField: "Movie_Theatre_id",
-          as: "orderdetails",
-        },
-      },
-    ]);
-//   let currentMovies = [];
-//   let today = new Date().toISOString().slice(0, 10); // convert to YYYY-MM-DD format
+  const movieCollection = await allMovies();
+  //   const movieArray = await movieCollection.find({}).toArray();
+
+  //We need to require ObjectId from mongo
+  let { ObjectId } = require("mongodb");
+  //console.log(typeof ObjectId);
+
+  let newMovieTheatreId = ObjectId(movieTheatreID);
+
+  // Get the showtimes for the movietheatre along with the movie details
+    const movieArray = await movieCollection
+      .aggregate([
+        {
+          $lookup: {
+            from: "Showtime",
+            localField: "_id",
+            foreignField: "Movie_id",
+            as: "MovieDetails",
+          },
+        }
+        // { $match: { Movie_Theatre_id: newMovieTheatreId } },
+      ])
+      .toArray();
 
 
-//   const movieTheatreArray = await movieTheatreCollection.aggregate([
-//                             {"$match" : {}}
+      // this works
+    //   const movieArray = await showtimeCollection
+    //     .aggregate([
+    //       {
+    //         $lookup: {
+    //           from: "MovieTheatres",
+    //           localField: "Movie_Theatre_id",
+    //           foreignField: "_id",
+    //           as: "MovieTheatreDetails",
+    //         },
+    //       },
+    //       { $match: { Movie_Theatre_id: newMovieTheatreId } },
+    //       {
+    //         $lookup: {
+    //           from: "Movies",
+    //           localField: "Movie_id",
+    //           foreignField: "_id",
+    //           as: "MovieDetails",
+    //         },
+    //       },
+    //     ])
+    //     .toArray();
 
-//   ])
 
+  //   for (i = 0; i < movieTheatreArray.length; i++) {
+  //     if (movieTheatreArray[i].Release_Date < today) currentMovies.push(movieArray[i]);
+  //   }
+  console.log("------------------------------");
+//   console.log(movieArray[0]);
+  console.log("------------------------------");
 
-
-//   for (i = 0; i < movieTheatreArray.length; i++) {
-//     if (movieTheatreArray[i].Release_Date < today) currentMovies.push(movieArray[i]);
-//   }
-
-  // console.log(currentMovies);
   return movieArray;
 }
 
