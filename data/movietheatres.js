@@ -19,7 +19,7 @@ async function getMovieTheatre(movieTheatre) {
   let newMovieTheatreId = ObjectId(movieTheatre);
 
   const movieTheatreID = await movieCollection.findOne({ _id: newMovieTheatreId }); //findOne({ Movie_Name: movie });
-    console.log(movieTheatreID);
+    // console.log(movieTheatreID);
   if (!movieTheatreID) throw "Movie Theatre not found..........";
   return movieTheatreID;
 }
@@ -36,21 +36,21 @@ async function getMovieTheatreList() {
 }
 
 // Currently playing movies
-async function getCurrentPlayingMoviesforMovieTheatre(movieTheatreID) {
+async function getMovieShowtimes() {
   // console.log("Inside getCurrentPlayingMoviesforMovieTheatre");
-  const theatreID = await getMovieTheatre(movieTheatreID);
+//   const theatreID = await getMovieTheatre(movieTheatreID);
   // console.log("Theatres id yyoooo ",theatreID)
 
-  const allMovieTheatres = await allMoviesTheatres();
-  const showtimeCollection = await allShowtimes();
+//   const allMovieTheatres = await allMoviesTheatres();
+//   const showtimeCollection = await allShowtimes();
   const movieCollection = await allMovies();
   //   const movieArray = await movieCollection.find({}).toArray();
 
   //We need to require ObjectId from mongo
-  let { ObjectId } = require("mongodb");
+//   let { ObjectId } = require("mongodb");
   //console.log(typeof ObjectId);
 
-  let newMovieTheatreId = ObjectId(movieTheatreID);
+//   let newMovieTheatreId = ObjectId(movieTheatreID);
 
   // Get the showtimes for the movietheatre along with the movie details
     const movieArray = await movieCollection
@@ -95,15 +95,54 @@ async function getCurrentPlayingMoviesforMovieTheatre(movieTheatreID) {
   //   for (i = 0; i < movieTheatreArray.length; i++) {
   //     if (movieTheatreArray[i].Release_Date < today) currentMovies.push(movieArray[i]);
   //   }
-  console.log("------------------------------");
+//   console.log("------------------------------");
 //   console.log(movieArray[0]);
-  console.log("------------------------------");
+//   console.log("------------------------------");
 
   return movieArray;
 }
 
+// Currently playing movies for X date
+// async function getCurrentPlayingMoviesforMovieTheatreonDate(movieTheatreID,Date) {
+//   // console.log("Inside getCurrentPlayingMoviesforMovieTheatre");
+//   const theatreID = await getMovieTheatre(movieTheatreID);
+//   // console.log("Theatres id yyoooo ",theatreID)
+
+//   const allMovieTheatres = await allMoviesTheatres();
+//   const showtimeCollection = await allShowtimes();
+//   const movieCollection = await allMovies();
+//   //   const movieArray = await movieCollection.find({}).toArray();
+
+//   //We need to require ObjectId from mongo
+//   let { ObjectId } = require("mongodb");
+//   //console.log(typeof ObjectId);
+
+//   let newMovieTheatreId = ObjectId(movieTheatreID);
+
+//   // Get the showtimes for the movietheatre along with the movie details
+//     const movieArray = await movieCollection
+//       .aggregate([
+//         {
+//           $lookup: {
+//             from: "Showtime",
+//             localField: "_id",
+//             foreignField: "Movie_id",
+//             as: "MovieDetails",
+//           },
+//         }
+//         // { $match: { Movie_Theatre_id: newMovieTheatreId } },
+//       ])
+//       .toArray();
+
+//     //   console.log("------------------------------");
+//     //   console.log(movieArray[0]);
+//     //   console.log("------------------------------");
+
+//   return movieArray;
+// }
+
 module.exports = {
   getMovieTheatre,
   getMovieTheatreList,
-  getCurrentPlayingMoviesforMovieTheatre,
+  getMovieShowtimes,
 };
