@@ -26,6 +26,7 @@ async function getMovie(movie) {
 
 // get single movie based on name  // need to test this 
 async function getMovieName(movieName) {
+  console.log("Inside getMovieName ");
   const movieCollection = await allMovies();
 
   if (!movieName || (typeof movieName == "string" && movieName.trim().length == 0))
@@ -115,8 +116,8 @@ async function getMovieTheatreShowtimeMovies() {
       .toArray();
 
     let newShowTimeList = [];
-    console.log(movieTheatreDetails);
-    for(i=0;i<theatreArray.length;i++)
+    // console.log(movieTheatreDetails);
+    // for(i=0;i<theatreArray.length;i++)
 
   return theatreArray;
 }
@@ -158,11 +159,118 @@ async function getMovieTheatreShowtimeMovies() {
 
                                 Creating the DB for Movies + Showtimes
 
+(This is for seeding purposes only)   
+
+-------------------------  
+          Movie
+-------------------------
+"_id":"",
+"Movie_Name":"",
+"Movie_Poster":"../../public/images/JohnWick3.jpg",
+"Release_Date":"",
+"Genre":[""],
+"Director":"",
+"Stars":[""],
+"MPAA":"",
+"Run_Time":"",
+"Plot":"",
+"Critic_Ratings":10,
+"User_Ratings":10,
+"User_Reviews":[""]
+
 /*****************************************************************************************/
 
+async function createMovie(
+  Movie_Name,
+  Movie_Poster,
+  Release_Date,
+  Genre,
+  Director,
+  Stars,
+  MPAA,
+  Run_Time,
+  Plot,
+  Critic_Ratings,
+  User_Ratings,
+  User_Reviews
+) {
 
+  const movieCollection = await allMovies();
 
+  // create movie object
+  let newMovie = {
+    Movie_Name: Movie_Name,
+    Movie_Poster: Movie_Poster,
+    Release_Date: Release_Date,
+    Genre: Genre,
+    Director: Director,
+    Stars: Stars,
+    MPAA: MPAA,
+    Run_Time: Run_Time,
+    Plot: Plot,
+    Critic_Ratings: Critic_Ratings,
+    User_Ratings: User_Ratings,
+    User_Reviews: User_Reviews
+  };
 
+  let insertedMovie = await movieCollection.insertOne(newMovie);
+
+  if (insertedMovie.insertedCount === 0)
+    throw "Movie was not created";
+
+  let newMovieId = insertedMovie.insertedId;
+
+  const movieDetails = await getMovie(newMovieId);
+
+  // console.log(movieDetails);
+
+  return movieDetails;
+}
+
+async function createShowtimes(
+  Movie_Name,
+  Movie_Poster,
+  Release_Date,
+  Genre,
+  Director,
+  Stars,
+  MPAA,
+  Run_Time,
+  Plot,
+  Critic_Ratings,
+  User_Ratings,
+  User_Reviews
+) {
+  const movieCollection = await allMovies();
+
+  // create movie object
+  let newMovie = {
+    Movie_Name: Movie_Name,
+    Movie_Poster: Movie_Poster,
+    Release_Date: Release_Date,
+    Genre: Genre,
+    Director: Director,
+    Stars: Stars,
+    MPAA: MPAA,
+    Run_Time: Run_Time,
+    Plot: Plot,
+    Critic_Ratings: Critic_Ratings,
+    User_Ratings: User_Ratings,
+    User_Reviews: User_Reviews,
+  };
+
+  let insertedMovie = await movieCollection.insertOne(newMovie);
+
+  if (insertedMovie.insertedCount === 0) throw "Movie was not created";
+
+  let newMovieId = insertedMovie.insertedId;
+
+  const movieDetails = await getMovie(newMovieId);
+
+  // console.log(movieDetails);
+
+  return movieDetails;
+}
 
 
 
@@ -171,8 +279,10 @@ async function getMovieTheatreShowtimeMovies() {
 
 module.exports = {
   getMovie,
+  // getMovieName,
   getCurrentPlayingMovies,
   getComingSoonMovies,
   getMovieTheatreShowtimeMovies,
   // getCurrentShowtimesatTheatre,
+  createMovie,
 };

@@ -18,7 +18,11 @@ const getCollectionFn = (collection) => {
 /* Now, you can list your collections here: */
 module.exports = {
   // add collections
+  users: getCollectionFn("Users"),
   movies: getCollectionFn("Movies"),
   movieTheatres: getCollectionFn("MovieTheatres"),
+  movieRatings: getCollectionFn("MovieRatings"),
+  movieTheatreRatings: getCollectionFn("MovieTheatreRatings"),
   showtime: getCollectionFn("Showtime"),
+  transactions: getCollectionFn("Transactions"),
 };

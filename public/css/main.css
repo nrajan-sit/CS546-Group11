@@ -103,13 +103,35 @@
 }
 
 .singleMovieTheatreDetails img{
-  height: 333px;
-  width: 225px;
+  height: 266px;
+  width: 180px;
 }
 
 .singleMovieTheatreDetails p{
   font-size: 15px;
   text-align: center;
+}
+
+
+
+/*************************************************************************
+
+                              Search Results Page
+
+/************************************************************************/
+
+#movieSearchList p{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* #movieSearchList li{
+  list-style-type: none;
+} */
+
+#movieSearchList li img{
+  height: 266px;
+  width: 180px;
 }
 
 /* .singleMovieDetails row{

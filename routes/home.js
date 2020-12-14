@@ -33,31 +33,6 @@ router.get("/", async (req, res) => {
 
   let finalMovieList1 = [];
 
-  // console.log(movieTheatreShowtimeDetails1);
-  // // prep the showtimelists
-  // for(i=0;i<movieTheatreShowtimeDetails1.length;i++)
-  //   if(movieTheatreShowtimeDetails1[i].MovieDetails.length != 0)
-  //     finalMovieList1.push(movieTheatreShowtimeDetails1[i]);
-
-
-  // // split the showtimes for the dates
-  // let k = 0;
-  // while(k < finalMovieList1.length){
-
-  //   if (finalMovieList1[k].Date != dayArray[0] || finalMovieList1[k].MovieDetails.length == 0) {
-  //     finalMovieList1.splice(k, 1);
-  //       k = 0;
-  //     }
-  //   else
-  //     k = k + 1;
-  // }
-
-  // console.log("what do we have here")
-  // console.log(finalMovieList1);
-
-
-
-
   res.render("home/home", {
     currentMovies: currentMovies,
     curretShowtimes: movieTheatreShowtimeDetails1,

@@ -4,6 +4,7 @@ const moviesRoutes = require("./movies");
 const movieDetailsRoutes = require("./moviedetails");
 const movieTheatresRoutes = require("./movietheatres");
 const movieTheatreDetailsRoutes = require("./movietheatredetails");
+const searchRoutes = require("./search");
 
 // const privateRoutes = require('./private');
 // const logoutRoutes = require('./logout');
@@ -20,6 +21,7 @@ const constructorMethod = (app) => {
   app.use("/moviedetails", movieDetailsRoutes);
   app.use("/movietheatres", movieTheatresRoutes);
   app.use("/movietheatredetails", movieTheatreDetailsRoutes);
+  app.use("/search", searchRoutes);
 
   // app.use("/movies/moviedetails/:id", moviesRoutes);
   // app.use('/private', privateRoutes);
