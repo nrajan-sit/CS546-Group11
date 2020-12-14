@@ -90,12 +90,16 @@
 
 /************************************************************************/
 /****** Movie details page******/
+.singleMovieTheatreDetails {
+  padding: 2em;
+}
 
 .singleMovieTheatreDetails h5{
   font-size: 50px;
   font-weight: bold;
   text-align: center;
 }
+
 
 .singleMovieTheatreDetails h6{
   font-size: 25px;
