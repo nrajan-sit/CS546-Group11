@@ -9,14 +9,16 @@
       rating,
       review,
       movieId,
-      userId: "some user id",
     };
     console.log("Data", data);
     var requestConfig = {
       method: "POST",
-      url: "http://localhost:3000/search/",
+      url: "http://localhost:3000/movierating/addReview",
       data: data,
     };
+    $.ajax(requestConfig).then(function (responseMessage) {
+        window.location.href = "http://localhost:3000/moviedetails/"+movieId
+    })
     return;
   });
 })(window.jQuery);

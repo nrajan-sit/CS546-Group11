@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const movieData = require("../data/movies");
+const movieRating = require("../data/movierating");
 
 const path = require("path");
 const app = express();
@@ -18,8 +19,31 @@ router.get("/:id", async (req, res) => {
   console.log("inside movie details ......");
   // console.log(req.params.id);
   const movieDetails = await movieData.getMovie(req.params.id);
+  const ratingDetails = await movieRating.getRatingByMovieId(req.params.id);
+  // console.log("ratingDetails",ratingDetails)
+  let ratings = ratingDetails.map((d) => {
+    return parseInt(d.rating);
+  });
+  const sum = ratings.reduce((a, b) => a + b, 0);
+  var avg = sum / ratings.length || 'N/A';
+  avg = !isNaN(avg) ? avg.toFixed(1) : avg;
+  let reviews = ratingDetails.map((d) => {
+    return d.review;
+  });
+  if (reviews.length === 0) {
+    reviews.push("N/A")
+  }
+  console.log("ratings", ratings);
+  console.log("avg", avg);
+  console.log("reviews", reviews);
   // console.log("And the movei is :- ", movieDetails);
-  res.render("movie/moviedetails", { movieDetails: movieDetails });
+  res.render("movie/moviedetails", {
+    movieDetails: movieDetails,
+    ratingDetails: {
+      avgRating: avg,
+      reviews: reviews
+    },
+  });
   console.log("......inside movie details ......");
 });
 
