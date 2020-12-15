@@ -1,17 +1,24 @@
 const express = require("express");
 const app = express();
+let body = require("body-parser");
 const session = require("express-session");
 const configRoutes = require("./routes");
 const path = require("path");
 const static = express.static(__dirname + "/public");
 const cookieParser = require("cookie-parser");
-
 const exphbs = require("express-handlebars");
 
 app.use("/public", static); // when static use /public directory
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(session({
+    secret: 'web programming',
+    resave: false,
+    rolling:false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}))
 
 app.use(express.static("./public/images"));
 
