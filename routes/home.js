@@ -24,17 +24,14 @@ app.use("/public", express.static(__dirname + "/public"));
 router.get("/", async (req, res) => {
   const currentMovies = await movieData.getCurrentPlayingMovies();
   const movieTheatreDetails = await movieTheatreData.getMovieTheatreList();
-  const movieTheatreShowtimeDetails1 = await movieData.getMovieTheatreShowtimeMovies();
+  const movieTheatreShowtimeDetails1 = await movieData.getMovieTheatreShowtimeMoviesv2();
 
-  let dayArray = [];
-  let day1 = new Date();
-  dayArray[0] = day1.toISOString().slice(0, 10);
-
-  let finalMovieList1 = [];
+  // console.log(movieTheatreDetails);
 
   res.render("home/home", {
     currentMovies: currentMovies,
-    curretShowtimes: movieTheatreShowtimeDetails1,
+    movieTheatreDetails : movieTheatreDetails,
+    currentShowtimes: movieTheatreShowtimeDetails1,
   });
 });
 

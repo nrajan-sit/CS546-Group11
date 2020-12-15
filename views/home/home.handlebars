@@ -21,34 +21,24 @@
                 <h5>{{Movie_Name}}</h5>
                 {{!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> --}}
             </div>
-        </div>
-        {{else}}
-        <div class="carousel-item">
-            <a href="moviedetails/{{_id}}">
-                <img src={{Movie_Poster}} class="d-block w-10" alt="..."></a>
-            <br><br><br><br>
-            <div class="carousel-caption">
-                <h5>{{Movie_Name}}</h5>
-                {{!-- <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> --}}
-            </div>
-        </div>
-        {{/if}}
-        {{/each}}
-    </div>
+        
 
-    <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </a>
+    {{#each movieTheatreDetails as |mtd|}}
+        <p>{{mtd.Movie_Theatre_Name}}</p>
 
-</div>
+        {{!-- {{#each currentShowtimes as |cs|}}
+            {{#ifCond cs. "User_Ratings"}}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
-{{#each curretShowtimes}}
-<p>{{Movie_Theatre_Name}}</p>
-<p>{{Movie_Name}}</p>
-<p>{{Time}}</p>
-{{/each}}
+                    <br>
+                    <h6>{{cs.Movie_Name}}</h6>
+                    {{#each cs.MovieDetails}}
+                        <button type="button" class="btn btn-primary">{{cs.Time}}</button>
+                    {{/each}}
+                    <br><br>
+                    
+                </div>
+            {{/each}} --}}
+    {{/each}}
+

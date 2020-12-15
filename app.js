@@ -18,6 +18,16 @@ app.use(express.static("./public/images"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" })); // master page
 app.set("view engine", "handlebars");
 
+// helper for handlebar if criteria
+var hbs = exphbs.create({});
+
+hbs.handlebars.registerHelper("ifCond", function (v1, v2, options) {
+    if (v1 == v2)
+      return options.fn(this);
+
+  return options.inverse(this);
+});
+
 configRoutes(app);
 
 app.listen(3000, () => {

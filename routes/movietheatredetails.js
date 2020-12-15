@@ -16,39 +16,36 @@ app.use("/public", express.static(__dirname + "/public"));
 // });
 
 router.get("/:id", async (req, res) => {
-  console.log("inside movie theatre details ......");
-  // console.log(req.params.id);
+    console.log("inside movie theatre details ......");
+    // console.log(req.params.id);
 
-  // Get the dates for the Tabs
-  let dayArray = [];
-  let day1 = new Date();
-  console.log(day1);
-  console.log(day1.toLocaleString());
-  console.log(day1);
-  dayArray[0] = day1.toISOString().slice(0, 10);
 
-  day1.setDate(day1.getDate() + 1);
-  dayArray[1] = day1.toISOString().slice(0, 10);
+    // Get the dates for the Tabs
+    // let dayArray = [];
+    // let day1 = new Date();
+    // console.log(day1);
+    // console.log(day1.toLocaleString());
+    // console.log(day1);
+    // dayArray[0] = day1.toISOString().slice(0, 10);
 
-  day1.setDate(day1.getDate() + 1);
-  dayArray[2] = day1.toISOString().slice(0, 10);
+    // day1.setDate(day1.getDate() + 1);
+    // dayArray[1] = day1.toISOString().slice(0, 10);
 
-  const movieTheatreDetails = await movieTheatreData.getMovieTheatre(
-    req.params.id
-  );
+    // day1.setDate(day1.getDate() + 1);
+    // dayArray[2] = day1.toISOString().slice(0, 10);
 
-  const finalMovieList1 = await movieTheatreData.createMovieTheatreWithShowTimes(
-    req.params.id,
-    dayArray[0]
-  );
-  const finalMovieList2 = await movieTheatreData.createMovieTheatreWithShowTimes(
-    req.params.id,
-    dayArray[1]
-  );
-  const finalMovieList3 = await movieTheatreData.createMovieTheatreWithShowTimes(
-    req.params.id,
-    dayArray[2]
-  );
+    let dayArray = [];
+    let newDate = new Date();
+    dayArray[0] = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + newDate.getDate();
+    dayArray[1] = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + (newDate.getDate() + 1);
+    dayArray[2] = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + (newDate.getDate() + 2);
+
+    const movieTheatreDetails = await movieTheatreData.getMovieTheatre(req.params.id);
+
+    const finalMovieList1 = await movieTheatreData.createMovieTheatreWithShowTimes(req.params.id,dayArray[0]);
+    const finalMovieList2 = await movieTheatreData.createMovieTheatreWithShowTimes(req.params.id,dayArray[1]);
+    const finalMovieList3 = await movieTheatreData.createMovieTheatreWithShowTimes(req.params.id,dayArray[2]);
+
 
   res.render("movietheatre/movietheatredetails", {
     movieTheatreDetails: movieTheatreDetails,

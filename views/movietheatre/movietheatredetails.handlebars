@@ -36,16 +36,16 @@
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             {{#if movieTheatreShowtimeDetails1}}
-            {{#each movieTheatreShowtimeDetails1}}
-            <br>
-            <h6>{{Movie_Name}}</h6>
-            <img src={{Movie_Poster}}>
-            {{#each MovieDetails}}
-            {{Date}}
-            <button type="button" class="btn btn-primary">{{Time}}</button>
-            {{/each}}
-            <br><br>
-            {{/each}}
+                {{#each movieTheatreShowtimeDetails1}}
+                    <br>
+                    <h6>{{Movie_Name}}</h6>
+                    <img src={{Movie_Poster}}>
+                    {{#each MovieDetails}}
+                    {{!-- {{Date}} --}}
+                    <button type="button" class="btn btn-primary">{{Time}}</button>
+                    {{/each}}
+                    <br><br>
+                {{/each}}
             {{else}}
             <p>There are no Movies playing for this date. Please check back later.</p>
             {{/if}}
@@ -53,14 +53,14 @@
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             {{#if movieTheatreShowtimeDetails2}}
             {{#each movieTheatreShowtimeDetails2}}
-            <br>
-            <h6>{{Movie_Name}}</h6>
-            <img src={{Movie_Poster}}>
-            {{#each MovieDetails}}
-            {{Date}}
-            <button type="button" class="btn btn-primary">{{Time}}</button>
-            {{/each}}
-            <br><br>
+                <br>
+                <h6>{{Movie_Name}}</h6>
+                <img src={{Movie_Poster}}>
+                {{#each MovieDetails}}
+                    {{!-- {{Date}} --}}
+                    <button type="button" class="btn btn-primary">{{Time}}</button>
+                {{/each}}
+                <br><br>
             {{/each}}
             {{else}}
             <p>There are no Movies playing for this date. Please check back later.</p>
@@ -74,7 +74,7 @@
             <h6>{{Movie_Name}}</h6>
             <img src={{Movie_Poster}}>
             {{#each MovieDetails}}
-            {{Date}}
+            {{!-- {{Date}} --}}
             <button type="button" class="btn btn-primary">{{Time}}</button>
             {{/each}}
             <br><br>

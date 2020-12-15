@@ -23,14 +23,13 @@ async function getMovieTheatre(movieTheatre) {
 }
 
 
-// Currently playing movies
+// Get all the movietheatres
 async function getMovieTheatreList() {
-  const movieCollection = await allMoviesTheatres();
-  const showtimeCollection = await allShowtimes();
-  const movieArray = await movieCollection.find({}).toArray();
+  const movieTheatreCollection = await allMoviesTheatres();
+  // const showtimeCollection = await allShowtimes();
+  const movieTheatreArray = await movieTheatreCollection.find({}).toArray();
 
-
-  return movieArray;
+  return movieTheatreArray;
 }
 
 // Currently playing movies

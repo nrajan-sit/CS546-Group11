@@ -1,0 +1,30 @@
+
+<div class="table-responsive">
+    <table class="table align-middle" id="topmovieslist">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Movies</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {{#ifCond customRating "User_Ratings"}}
+                {{#each topMovies as | m |}}
+                    <tr>
+                    <td></td> {{!-- Leaving blank for ranking in CSS --}}
+                    <td><img src={{m.Movie_Poster}}> <br>{{m.Movie_Name}}<br> (Rating = {{m.User_Ratings}} )</td>
+                    <td></td>
+                {{/each}}
+            {{else}}
+                {{#each topMovies as | m |}}
+                <tr>
+                    <td></td> {{!-- Leaving blank for ranking in CSS --}}
+                    <td><img src={{m.Movie_Poster}}> <br>{{m.Movie_Name}}<br> (Rating = {{m.Critic_Ratings}} )</td>
+                    <td></td>
+                    {{/each}}
+            {{/ifCond}}
+
+        </tbody>
+    </table>
+</div>
