@@ -6,7 +6,6 @@ const path = require("path");
 const app = express();
 app.use("/public", express.static(__dirname + "/public"));
 
-
 router.get("/", async (req, res) => {
   console.log("inside movie details do nothing");
   // console.log(req.params.id);
@@ -16,13 +15,12 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-    console.log("inside movie details ......")
-    // console.log(req.params.id);
-    const movieDetails = await movieData.getMovie(req.params.id);
-    // console.log("And the movei is :- ", movieDetails);
-    res.render("movie/moviedetails", { movieDetails: movieDetails });
-    console.log("......inside movie details ......");
-    
+  console.log("inside movie details ......");
+  // console.log(req.params.id);
+  const movieDetails = await movieData.getMovie(req.params.id);
+  // console.log("And the movei is :- ", movieDetails);
+  res.render("movie/moviedetails", { movieDetails: movieDetails });
+  console.log("......inside movie details ......");
 });
 
 module.exports = router;

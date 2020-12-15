@@ -7,13 +7,13 @@ const app = express();
 app.use("/public", express.static(__dirname + "/public"));
 
 router.get("/:id", async (req, res) => {
-    // console.log("inside search.js / ");
+  // console.log("inside search.js / ");
 
-    const searchMovie = await searchData.getMovieList(req.params.id);
-    // console.log("inside search.js 3/ ", req.params.id);
+  const searchMovie = await searchData.getMovieList(req.params.id);
+  // console.log("inside search.js 3/ ", req.params.id);
 
-    // res.render("home/search", { searchMovie: searchMovie });
-    res.json(searchMovie);
+  // res.render("home/search", { searchMovie: searchMovie });
+  res.json(searchMovie);
 });
 
 module.exports = router;

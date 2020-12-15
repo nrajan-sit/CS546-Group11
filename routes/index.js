@@ -1,4 +1,3 @@
-
 const homeRoutes = require("./home");
 const moviesRoutes = require("./movies");
 const movieDetailsRoutes = require("./moviedetails");
@@ -12,8 +11,6 @@ const searchRoutes = require("./search");
 const express = require("express");
 const app = express();
 app.use("/public", express.static(__dirname + "/public"));
-
-
 
 const constructorMethod = (app) => {
   app.use("/", homeRoutes);

@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const session = require('express-session');
-const configRoutes = require('./routes');
-const path = require('path');
+const session = require("express-session");
+const configRoutes = require("./routes");
+const path = require("path");
 const static = express.static(__dirname + "/public");
 const cookieParser = require("cookie-parser");
 

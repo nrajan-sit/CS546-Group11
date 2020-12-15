@@ -1,33 +1,32 @@
+<br> <br>
+<h4 id="Comingsoon"> Now Showing </h4>
+<br>
 
-        <br> <br>
-        <h4 id="Comingsoon"> Now Showing </h4>
-        <br>
-
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="CurrentPlayingMovie">
+<div class="row row-cols-1 row-cols-md-3 g-4" id="CurrentPlayingMovie">
         {{#each currentMovies}}
-                <div class="col">
-                                <div class="card text-center">
-                                <a href="moviedetails/{{_id}}">
+        <div class="col">
+                <div class="card text-center">
+                        <a href="moviedetails/{{_id}}">
                                 <img src={{Movie_Poster}} class="card-img-top" alt="..."></a>
-                                <div class="card-body">
-                                        <div class="MovieTitleFont">
+                        <div class="card-body">
+                                <div class="MovieTitleFont">
                                         <h5 class="card-title">{{Movie_Name}}</h5>
-                                        </div>
+                                </div>
                         </div>
                 </div>
-                </div>
-        {{/each}}
         </div>
+        {{/each}}
+</div>
 
-        <br> <br> 
-        <h4 id="Comingsoon"> Coming Soon </h4>
-        <br>
-        <div class="row row-cols-1 row-cols-md-3 g-4" id="CurrentPlayingMovie">
+<br> <br>
+<h4 id="Comingsoon"> Coming Soon </h4>
+<br>
+<div class="row row-cols-1 row-cols-md-3 g-4" id="CurrentPlayingMovie">
         {{#each futureMovies}}
-                <div class="col">
-                        <div class="card text-center">
+        <div class="col">
+                <div class="card text-center">
                         <a href="moviedetails/{{_id}}">
-                        <img src={{Movie_Poster}} class="card-img-top" alt="..."></a>
+                                <img src={{Movie_Poster}} class="card-img-top" alt="..."></a>
                         <div class="card-body">
                                 <div class="MovieTitleFont">
                                         <h5 class="card-title">{{Movie_Name}}</h5>
@@ -35,6 +34,6 @@
                                 <p class="card-title"> { {{Release_Date}} }</p>
                         </div>
                 </div>
-                </div>
+        </div>
         {{/each}}
-        </div>   
+</div>

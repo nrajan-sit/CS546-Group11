@@ -15,7 +15,6 @@ app.use("/public", express.static(__dirname + "/public"));
 // const cookieParser = require("cookie-parser");
 // app.use(cookieParser());
 
-
 // const userData = data.users;
 
 // let currentUser = [];
@@ -27,7 +26,7 @@ router.get("/", async (req, res) => {
   const movieTheatreDetails = await movieTheatreData.getMovieTheatreList();
   const movieTheatreShowtimeDetails1 = await movieData.getMovieTheatreShowtimeMovies();
 
-  let dayArray = []
+  let dayArray = [];
   let day1 = new Date();
   dayArray[0] = day1.toISOString().slice(0, 10);
 

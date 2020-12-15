@@ -7,9 +7,11 @@ const app = express();
 app.use("/public", express.static(__dirname + "/public"));
 
 router.get("/", async (req, res) => {
-  console.log("inside movietheatre.js / ")
+  console.log("inside movietheatre.js / ");
   const movieTheatreList = await movieTheatreData.getMovieTheatreList();
-  res.render("movietheatre/movietheatre", {movieTheatreList: movieTheatreList});
+  res.render("movietheatre/movietheatre", {
+    movieTheatreList: movieTheatreList,
+  });
 });
 
 module.exports = router;
