@@ -21,18 +21,24 @@ router.get("/:id", async (req, res) => {
 
 
     // Get the dates for the Tabs
+    // let dayArray = [];
+    // let day1 = new Date();
+    // console.log(day1);
+    // console.log(day1.toLocaleString());
+    // console.log(day1);
+    // dayArray[0] = day1.toISOString().slice(0, 10);
+
+    // day1.setDate(day1.getDate() + 1);
+    // dayArray[1] = day1.toISOString().slice(0, 10);
+
+    // day1.setDate(day1.getDate() + 1);
+    // dayArray[2] = day1.toISOString().slice(0, 10);
+
     let dayArray = [];
-    let day1 = new Date();
-    console.log(day1);
-    console.log(day1.toLocaleString());
-    console.log(day1);
-    dayArray[0] = day1.toISOString().slice(0, 10);
-
-    day1.setDate(day1.getDate() + 1);
-    dayArray[1] = day1.toISOString().slice(0, 10);
-
-    day1.setDate(day1.getDate() + 1);
-    dayArray[2] = day1.toISOString().slice(0, 10);
+    let newDate = new Date();
+    dayArray[0] = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + newDate.getDate();
+    dayArray[1] = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + (newDate.getDate() + 1);
+    dayArray[2] = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + (newDate.getDate() + 2);
 
     const movieTheatreDetails = await movieTheatreData.getMovieTheatre(req.params.id);
 

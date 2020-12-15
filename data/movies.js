@@ -122,6 +122,42 @@ async function getMovieTheatreShowtimeMovies() {
   return theatreArray;
 }
 
+
+// This is not working yet..... need to fix this for main page showtimes
+async function getMovieTheatreShowtimeMoviesv2() {
+
+  console.log("inside getMovieTheatreShowtimeMoviesv2");
+  const showtimeCollection = await allShowtimes();
+  const movieCollection = await allMovies();
+  const movieTheatreCollection = await allMovieTheatres();
+
+  let dayArray = [];
+  let newDate = new Date();
+  dayArray[0] = newDate.getFullYear() + "-" + (newDate.getMonth() + 1) + "-" + newDate.getDate();
+
+  const movieTheatreDetails = await movieTheatreData.getMovieTheatreList();
+
+  // console.log(movieTheatreDetails[1].Movie_Theatre_Name);
+  let showtimesForToday = []
+  let show;
+  let movieTheatreName;
+
+  for(i=0;i<movieTheatreDetails.length;i++){
+    movieTheatreName = movieTheatreDetails[i].Movie_Theatre_Name;
+    show = await movieTheatreData.createMovieTheatreWithShowTimes(movieTheatreDetails[i]._id, dayArray[0]);
+    console.log("-----------------")
+    console.log(movieTheatreName);
+    console.log("-----------------");
+    console.log(show)
+    console.log("---------------->")
+    showtimesForToday.push(show);
+  }
+    // console.log(showtimesForToday);
+    // for(i=0;i<theatreArray.length;i++)
+
+  return showtimesForToday[0];
+}
+
 // current showtimes
 // async function getCurrentShowtimesatTheatre() {
 //   const movieCollection = await allMovies();
@@ -283,6 +319,7 @@ module.exports = {
   getCurrentPlayingMovies,
   getComingSoonMovies,
   getMovieTheatreShowtimeMovies,
+  getMovieTheatreShowtimeMoviesv2,
   // getCurrentShowtimesatTheatre,
   createMovie,
 };

@@ -48,8 +48,23 @@
                 
             </div>
         
-    {{#each curretShowtimes}}
-        <p>{{Movie_Theatre_Name}}</p>
-        <p>{{Movie_Name}}</p>
-        <p>{{Time}}</p>
+
+    {{#each movieTheatreDetails as |mtd|}}
+        <p>{{mtd.Movie_Theatre_Name}}</p>
+
+        {{!-- {{#each currentShowtimes as |cs|}}
+            {{#ifCond cs. "User_Ratings"}}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                    <br>
+                    <h6>{{cs.Movie_Name}}</h6>
+                    {{#each cs.MovieDetails}}
+                        <button type="button" class="btn btn-primary">{{cs.Time}}</button>
+                    {{/each}}
+                    <br><br>
+                    
+                </div>
+            {{/each}} --}}
     {{/each}}
+

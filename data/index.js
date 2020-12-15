@@ -3,6 +3,7 @@ const movieTheatreData = require("./movietheatres");
 const showTimeData = require("./showtimes");
 const userData = require("./users");
 const searchData = require("./search");
+const topMovieData = require("./topmovies");
 
 module.exports = {
   movies: movieData,
@@ -10,4 +11,5 @@ module.exports = {
   showtimes: showTimeData,
   users: userData,
   search: searchData,
+  topmovies: topMovieData,
 };

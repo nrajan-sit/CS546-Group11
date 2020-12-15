@@ -28,7 +28,7 @@ const main = async () => {
     "In this third installment of the adrenaline-fueled action franchise, skilled assassin John Wick (Keanu Reeves) returns with a $14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin's guild, the High Table, John Wick is excommunicado, but the world's most ruthless hit men and women await his every turn.",
     10,
     10,
-    [""]
+    []
   );
 
   const F9 = await movieData.createMovie(
@@ -43,7 +43,7 @@ const main = async () => {
     "Cypher enlists the help of Jakob, Dom's younger brother to take revenge on Dom and his team.",
     10,
     9,
-    [""]
+    []
   );
 
   const Tenet = await movieData.createMovie(
@@ -73,7 +73,7 @@ const main = async () => {
     "Fast forward to the 1980s as Wonder Woman's next big screen adventure finds her facing two all-new foes: Max Lord and The Cheetah.",
     0,
     0,
-    [""]
+    []
   );
 
   const Mulan = await movieData.createMovie(
@@ -88,7 +88,7 @@ const main = async () => {
     "A young Chinese maiden disguises herself as a male warrior in order to save her father.",
     5.5,
     0,
-    [""]
+    []
   );
 
   const SoundofMetal = await movieData.createMovie(
@@ -103,7 +103,7 @@ const main = async () => {
     "A heavy-metal drummer's life is thrown into freefall when he begins to lose his hearing.",
     7.8,
     0,
-    [""]
+    []
   );
 
   const BadBoysforLife = await movieData.createMovie(
@@ -118,7 +118,7 @@ const main = async () => {
     "Miami detectives Mike Lowrey and Marcus Burnett must face off against a mother-and-son pair of drug lords who wreak vengeful havoc on their city.",
     6.6,
     0,
-    [""]
+    []
   );
 
   const OldGuard = await movieData.createMovie(
@@ -133,7 +133,7 @@ const main = async () => {
     "A covert team of immortal mercenaries is suddenly exposed and must now fight to keep their identity a secret just as an unexpected new member is discovered.",
     6.6,
     0,
-    [""]
+    []
   );
 
   const BillandTed = await movieData.createMovie(
@@ -148,7 +148,7 @@ const main = async () => {
     "Once told they'd save the universe during a time-traveling adventure, 2 would-be rockers from San Dimas, California find themselves as middle-aged dads still trying to crank out a hit song and fulfill their destiny.",
     6.1,
     0,
-    [""]
+    []
   );
 
   const Onward = await movieData.createMovie(
@@ -163,8 +163,68 @@ const main = async () => {
     "Two elven brothers embark on a quest to bring their father back for one day.",
     7.4,
     0,
-    [""]
+    []
   );
+
+  const Dune = await movieData.createMovie(
+    "Onward",
+    "../../public/images/dune.jpg",
+    "2021-10-01",
+    ["Adventure", "Drama", "Sci - Fi"],
+    "Denis Villeneuve",
+    ["Zendaya", "Timothée Chalamet", "Rebecca Ferguson"],
+    "PG-13",
+    "N/A",
+    "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+    0,
+    0,
+    []
+  );
+
+  const NoTimeToDie = await movieData.createMovie(
+    "No Time to Die",
+    "../../public/images/NoTimeToDie.jpg",
+    "2021-05-02",
+    ["Action", "Adventure", "Thriller"],
+    "Cary Joji Fukunaga",
+    ["Ana de Armas", "Daniel Craig", "Léa Seydoux"],
+    "PG-13",
+    "163m",
+    "James Bond has left active service. His peace is short-lived when Felix Leiter, an old friend from the CIA, turns up asking for help, leading Bond onto the trail of a mysterious villain armed with dangerous new technology.",
+    0,
+    0,
+    []
+  );
+
+  const Elf = await movieData.createMovie(
+    "Elf",
+    "../../public/images/elf.jpg",
+    "2003-11-07",
+    ["Adventure", "Comedy", "Family"],
+    "Jon Favreau",
+    ["Will Ferrell", "James Caan", "Bob Newhart" ],
+    "PG",
+    "97m",
+    "After discovering he is a human, a man raised as an elf at the North Pole decides to travel to New York City to locate his real father.",
+    7,
+    0,
+    []
+  );
+
+  const Grinch = await movieData.createMovie(
+    "How the Grinch Stole Christmas",
+    "../../public/images/Grinch.jpg",
+    "2000-11-17",
+    ["Comedy", "Family", "Fantasy"],
+    "Ron Howard",
+    ["Jim Carrey", "Taylor Momsen", "Kelley"],
+    "PG",
+    "104m",
+    "On the outskirts of Whoville lives a green, revenge-seeking Grinch who plans to ruin Christmas for all of the citizens of the town.",
+    6.2,
+    0,
+    []
+  );  
 
   /////////////////////////////////////////////////////////////////////////////////////////////
   //                                Movie Theatre List
