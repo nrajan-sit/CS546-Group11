@@ -1,4 +1,20 @@
 (function ($) {
+  $("#hideRating").css("display","none")
+  $("#theatreRatingDiv").css("display","none")
+  $("#showRating").click(function(event) {
+    event.preventDefault();
+    $("#theatreRatingDiv").css("display","block")
+    $("#hideRating").css("display","block")
+    $("#showRating").css("display","none")
+    console.log("show rating clicked")
+  })
+  $("#hideRating").click(function(event) {
+    event.preventDefault();
+    $("#theatreRatingDiv").css("display","none")
+    $("#showRating").css("display","block");
+    $("#hideRating").css("display","none")
+    console.log("hide rating clicked")
+  })
   $("#movieTheatreRatingSubmit").submit(function (event) {
     let rating = $("#rating-theatre").val();
     let review = $("#review-theatre").val().trim();
@@ -18,8 +34,8 @@
       data: data,
     };
     $.ajax(requestConfig).then(function (responseMessage) {
-        window.location.href = "http://localhost:3000/movietheatres/"
-    })
+      location.replace(document.referrer);
+    });
     return;
   });
 })(window.jQuery);

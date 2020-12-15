@@ -394,3 +394,15 @@ float: right;
 .blockquote-footer {
   margin-top: 0 !important;
 }
+.theatre-ratings {
+  background-color: coral !important;
+  color: whitesmoke;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+.rating-btn {
+  width: 10%;
+}
+#theatreRatingDiv {
+  display: none;
+}

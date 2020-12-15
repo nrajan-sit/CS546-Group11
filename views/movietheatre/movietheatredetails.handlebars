@@ -2,6 +2,10 @@
 <div class="singleMovieTheatreDetails">
     <h5>{{movieTheatreDetails.Movie_Theatre_Name}}</h5>
     <p class="mb-2">Been There ? <a href="/movietheatrerating/{{movieTheatreDetails._id}}">Give Rating</a></p>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary rating-btn" id="showRating">Show Ratings</button>
+        <button class="btn btn-secondary rating-btn" id="hideRating">Hide Ratings</button>
+    </div>
     <br><br>
     {{!-- <div class="container">
         <dl class="row">
@@ -18,7 +22,22 @@
 
         </dl>
     </div> --}}
-
+    <div class="theatre-ratings" id="theatreRatingDiv">
+        <dl>
+            <dt class=".col-6 .col-md-4">User Ratings</dt>
+            <dd class=".col-md-8">
+                {{ratingDetails.avgRating}}
+            </dd>
+            <dt class=".col-6 .col-md-4">User Reviews</dt>
+            <dd class=".col-md-8">
+                <ul>
+                    {{#each ratingDetails.reviews}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </dd>
+        </dl>
+    </div>
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -37,16 +56,16 @@
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             {{#if movieTheatreShowtimeDetails1}}
-                {{#each movieTheatreShowtimeDetails1}}
-                    <br>
-                    <h6>{{Movie_Name}}</h6>
-                    <img src={{Movie_Poster}}>
-                    {{#each MovieDetails}}
-                    {{!-- {{Date}} --}}
-                    <button type="button" class="btn btn-primary">{{Time}}</button>
-                    {{/each}}
-                    <br><br>
-                {{/each}}
+            {{#each movieTheatreShowtimeDetails1}}
+            <br>
+            <h6>{{Movie_Name}}</h6>
+            <img src={{Movie_Poster}}>
+            {{#each MovieDetails}}
+            {{!-- {{Date}} --}}
+            <button type="button" class="btn btn-primary">{{Time}}</button>
+            {{/each}}
+            <br><br>
+            {{/each}}
             {{else}}
             <p>There are no Movies playing for this date. Please check back later.</p>
             {{/if}}
@@ -54,14 +73,14 @@
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
             {{#if movieTheatreShowtimeDetails2}}
             {{#each movieTheatreShowtimeDetails2}}
-                <br>
-                <h6>{{Movie_Name}}</h6>
-                <img src={{Movie_Poster}}>
-                {{#each MovieDetails}}
-                    {{!-- {{Date}} --}}
-                    <button type="button" class="btn btn-primary">{{Time}}</button>
-                {{/each}}
-                <br><br>
+            <br>
+            <h6>{{Movie_Name}}</h6>
+            <img src={{Movie_Poster}}>
+            {{#each MovieDetails}}
+            {{!-- {{Date}} --}}
+            <button type="button" class="btn btn-primary">{{Time}}</button>
+            {{/each}}
+            <br><br>
             {{/each}}
             {{else}}
             <p>There are no Movies playing for this date. Please check back later.</p>
