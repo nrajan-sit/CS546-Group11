@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const movieData = require("../data/movies");
-const movieRating = require("../data/movierating");
+const movieTheatreRating = require("../data/movietheatrerating");
 const movieTheatreData = require("../data/movietheatres");
 
 const path = require("path");
@@ -53,11 +53,10 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/addReview", async (req, res) => {
-  console.log("inside add review ......");
-  console.log(movieRating);
-  // console.log(req.params.id);
-  const movieDetails = await movieRating.addRating(req.body);
-  const ratingDetails = await movieRating.getRatingByMovieId(req.body.movieId);
+  console.log("inside add review theatre ......");
+  console.log(req.body);
+  const movieDetails = await movieTheatreRating.addRating(req.body);
+  const ratingDetails = await movieTheatreRating.getRatingByTheatreId(req.body.theaterId.toString());
   console.log("ratingDetails", ratingDetails);
   // console.log("And the movei is :- ", movieDetails);
   res.render("movie/moviedetails", {

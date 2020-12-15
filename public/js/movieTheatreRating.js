@@ -11,6 +11,15 @@
       theaterId,
     };
     console.log("Data", data);
+
+    var requestConfig = {
+      method: "POST",
+      url: "http://localhost:3000/movietheatrerating/addReview",
+      data: data,
+    };
+    $.ajax(requestConfig).then(function (responseMessage) {
+        window.location.href = "http://localhost:3000/movietheatres/"
+    })
     return;
   });
 })(window.jQuery);
