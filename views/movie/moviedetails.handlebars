@@ -22,7 +22,10 @@
             <dt class=".col-6 .col-md-4">Critic Ratings</dt>
             <dd class=".col-md-8">{{movieDetails.Critic_Ratings}}</dd>
             <dt class=".col-6 .col-md-4">User Ratings</dt>
-            <dd class=".col-md-8">{{movieDetails.User_Ratings}}</dd>
+            <dd class=".col-md-8">
+                {{movieDetails.User_Ratings}}
+                <a href="/movierating/{{movieDetails._id}}">Give Rating</a>
+            </dd>
             <dt class=".col-6 .col-md-4">User Reviews</dt>
             <dd class=".col-md-8">{{movieDetails.User_Reviews}}</dd>
         </dl>

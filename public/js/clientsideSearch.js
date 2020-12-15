@@ -20,7 +20,7 @@
   //     showList.show();
   //     showDetail.hide();
   // });
-
+  
   /***************************** Search Form Submission *****************************/
   searchLink.submit(function (event) {
     console.log("Submit button clicked");
@@ -77,6 +77,7 @@
     // showDetail.hide();
     // homeLink.hide();
   });
+
 
   // navtab.on('click', "nav-item", function () {
   //     console.log("NAV TAB CLICKED");

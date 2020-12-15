@@ -1,0 +1,29 @@
+<br>
+<div class="singleMovieDetails">
+    <h5>Give Review to {{movieDetails.Movie_Name}}</h5>
+    <form class="row-cols-md-3 d-flex justify-content-center" id="movieRatingSubmit" method="post">
+        <div class="box">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Rating</label>
+                <select class="form-control" id="rating" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label for="exampleInputPassword1">Review</label>
+                <textarea class="form-control" maxlength="50" id="review" rows="3"></textarea>
+            </div>
+            <input type="text" name="movieId" id="movieId" hidden value="{{movieDetails._id}}">
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        </div>
+    </form>
+</div>

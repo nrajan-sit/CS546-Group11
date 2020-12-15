@@ -1,6 +1,7 @@
 const homeRoutes = require("./home");
 const moviesRoutes = require("./movies");
 const movieDetailsRoutes = require("./moviedetails");
+const movieRatingRoutes = require("./movierating");
 const movieTheatresRoutes = require("./movietheatres");
 const movieTheatreDetailsRoutes = require("./movietheatredetails");
 const searchRoutes = require("./search");
@@ -17,6 +18,7 @@ const constructorMethod = (app) => {
   app.use("/", homeRoutes);
   app.use("/movies", moviesRoutes);
   app.use("/moviedetails", movieDetailsRoutes);
+  app.use("/movierating", movieRatingRoutes);
   app.use("/movietheatres", movieTheatresRoutes);
   app.use("/movietheatredetails", movieTheatreDetailsRoutes);
   app.use("/search", searchRoutes);
