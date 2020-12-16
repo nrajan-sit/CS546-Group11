@@ -43,18 +43,23 @@
                             <li><a class="dropdown-item" href="/topmovies/Critic_Ratings/10">by Critics</a></li>
                         </ul>
                     </li>
+					
+					{{#unless userList.User_Name}}
                     <li class="nav-item">
                         <a class="nav-link" href= "/user">User</a>
                     </li>
+					{{/unless}}
 					
+					 {{#if userList.User_Name}}
 					 <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">User</a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                             <li><a class="dropdown-item" href="/userDetail">User Profile</a></li>
-                            <li><a class="dropdown-item" href="">Log Out</a></li>
+                            <li><a class="dropdown-item" href="/user/logout">Log Out</a></li>
                         </ul>
                     </li>
+					{{/if}}
 					
                 </ul>
                 <form class="d-flex" id="searchForm" method="post">

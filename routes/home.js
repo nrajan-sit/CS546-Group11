@@ -27,11 +27,19 @@ router.get("/", async (req, res) => {
   const movieTheatreShowtimeDetails1 = await movieData.getMovieTheatreShowtimeMoviesv2();
 
   // console.log(movieTheatreDetails);
+  
+  // added for enable disable User Link
+  
+  const userList = req.session.user ;
+  
+  //-----------------------------
+  
 
   res.render("home/home", {
     currentMovies: currentMovies,
     movieTheatreDetails : movieTheatreDetails,
     currentShowtimes: movieTheatreShowtimeDetails1,
+	userList: userList
   });
 });
 

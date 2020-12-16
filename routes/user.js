@@ -33,6 +33,13 @@ router.post("/signUp", async (req,res)=>{
     }
 })
 
+router.get("/logout", async (req, res) => {
+
+  const userList = ""
+  req.session.destroy();
+  res.redirect("/");
+});
+
 
 
 router.get("/", async (req, res) => {
