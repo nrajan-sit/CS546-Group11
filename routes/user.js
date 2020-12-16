@@ -3,7 +3,7 @@ const router = express.Router();
 const movieTheatreData = require("../data/movietheatres");
 const User = require("../data/users");
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 16;
 
 const path = require("path");

@@ -1,6 +1,6 @@
 const connection = require("../config/mongoCollections");
 const allUsers = connection.users;
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcryptjs");
 const saltRounds = 16;
 
 async function getUser(User_Name) {
