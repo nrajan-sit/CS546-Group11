@@ -65,19 +65,47 @@ router.post("/signin", async (req, res,next) => {
         unameresult = await User.getUser(usersname);
         //passresult = User.passwordValidator(usersname, pass)
 
-        if (unameresult && unameresult.Password_Hashed === pass) {
+        if (unameresult && await bcrypt.compare(pass, unameresult.Password_Hashed)) {
             console.log(unameresult, req.session);
             
-            let { _id, username, firstName, lastName} = unameresult
+           let { _id,
+              First_Name,
+              Last_Name,
+              User_Name,
+              Email,
+              Gender,
+              DOB,
+              Home_Address_1,
+              Home_Address_2,
+              Home_City,Home_State,
+              Home_Zip
+              ,Phone_Number
+              ,Credit_Card_Number_Hashed
+              ,Expiry_Month
+              ,Expiry_Year
+              ,Security_Code} = unameresult
 
             res.cookie('name', 'AuthCookie')
 
             let user = {
-                _id,
-                username,
-                firstName,
-                lastName,
-            }
+                _id, First_Name,
+                Last_Name,
+                User_Name,
+                Email,
+                Gender,
+                DOB,
+                Home_Address_1,
+                Home_Address_2,
+                Home_City,
+                Home_State,
+                Home_Zip
+                ,Phone_Number
+                ,Credit_Card_Number_Hashed
+                ,Expiry_Month
+                ,Expiry_Year
+                ,Security_Code
+                                  }
+
             req.session.user = user
             var status="(Authenticated User)";
             console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status)
