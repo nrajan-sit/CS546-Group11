@@ -60,7 +60,7 @@
         // console.log("allMovies.length : ", allMovies.length);
         // movieSearchList.append("<ol>");
         if (allMovies.length == 0)
-          movieSearchList.append("<li> No shows found </li>");
+          movieSearchList.append("<li> No Movies found </li>");
         else
           $.each(allMovies, function (i, singleMovie) {
             // console.log('hello')

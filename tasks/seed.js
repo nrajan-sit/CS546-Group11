@@ -167,7 +167,7 @@ const main = async () => {
   );
 
   const Dune = await movieData.createMovie(
-    "Onward",
+    "Dune",
     "../../public/images/dune.jpg",
     "2021-10-01",
     ["Adventure", "Drama", "Sci - Fi"],

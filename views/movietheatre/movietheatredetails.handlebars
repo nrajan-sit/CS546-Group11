@@ -1,27 +1,13 @@
 <br>
 <div class="singleMovieTheatreDetails">
     <h5>{{movieTheatreDetails.Movie_Theatre_Name}}</h5>
-    <p class="mb-2">Been There ? <a href="/movietheatrerating/{{movieTheatreDetails._id}}">Give Rating</a></p>
+    <p class="mb-2">Been There? <a href="/movietheatrerating/{{movieTheatreDetails._id}}">Give Rating</a></p>
     <div class="d-flex justify-content-center">
         <button class="btn btn-primary rating-btn" id="showRating">Show Ratings</button>
         <button class="btn btn-secondary rating-btn" id="hideRating">Hide Ratings</button>
     </div>
     <br><br>
-    {{!-- <div class="container">
-        <dl class="row">
-            <dt class=".col-6 .col-md-4">Address_Line_1</dt>
-            <dd class=".col-md-8">{{movieTheatreDetails.Address_Line_1}}</dd>
-            <dt class=".col-6 .col-md-4">Address_Line_2</dt>
-            <dd class=".col-md-8">{{movieTheatreDetails.Address_Line_2}}</dd>
-            <dt class=".col-6 .col-md-4">City</dt>
-            <dd class=".col-md-8">{{movieTheatreDetails.City}}</dd>
-            <dt class=".col-6 .col-md-4">State</dt>
-            <dd class=".col-md-8">{{movieTheatreDetails.State}}</dd>
-            <dt class=".col-6 .col-md-4">Zip</dt>
-            <dd class=".col-md-8">{{movieTheatreDetails.Zip}}</dd>
 
-        </dl>
-    </div> --}}
     <div class="theatre-ratings" id="theatreRatingDiv">
         <dl>
             <dt class=".col-6 .col-md-4">User Ratings</dt>
@@ -62,7 +48,7 @@
             <img src={{Movie_Poster}}>
             {{#each MovieDetails}}
             {{!-- {{Date}} --}}
-            <button type="button" class="btn btn-primary">{{Time}}</button>
+            <button type="button" class="btn btn-outline-primary" type="submit">{{Time}}</button>
             {{/each}}
             <br><br>
             {{/each}}
@@ -78,7 +64,7 @@
             <img src={{Movie_Poster}}>
             {{#each MovieDetails}}
             {{!-- {{Date}} --}}
-            <button type="button" class="btn btn-primary">{{Time}}</button>
+            <button type="button" class="btn btn-outline-primary" type="submit">{{Time}}</button>
             {{/each}}
             <br><br>
             {{/each}}
@@ -95,7 +81,7 @@
             <img src={{Movie_Poster}}>
             {{#each MovieDetails}}
             {{!-- {{Date}} --}}
-            <button type="button" class="btn btn-primary">{{Time}}</button>
+            <button type="button" class="btn btn-outline-primary" type="submit">{{Time}}</button>
             {{/each}}
             <br><br>
             {{/each}}

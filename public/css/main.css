@@ -10,11 +10,6 @@
   font-size: 50px;
 }
 
-/* .navbar{
-  background:linear-gradient(45deg,#ff8000, #dd4814, #77216f, #5e2750);
-  
-} */
-
 /*********** carousel movie things ************/
 /* Movie Poster Size */
 .carousel-inner img{
@@ -29,6 +24,16 @@
   font-weight: bold;
   top: 28em;
 }
+
+/* search box for movies*/
+.d-flex input{
+  width:250px !important;
+  padding: 10px 18px;
+  height: 38px;
+  top: 8px;
+  position: relative;
+}
+
 /*************************************************************************
 
                               Movie Page
@@ -116,6 +121,9 @@
   text-align: center;
 }
 
+.singleMovieTheatreDetails button{
+  width: 150px;
+}
 
 
 /*************************************************************************
@@ -315,7 +323,7 @@ span.psw {
 /* The Modal (background) */
 .userModal {
 /*  display: none; /* Hidden by default */
-  /* position: fixed; /* Stay in place */ */
+  /* position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
