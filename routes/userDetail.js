@@ -25,8 +25,9 @@ router.get("/userUpdate", async (req, res) => {
 router.post("/userUpdate", async (req, res) => {
   try{
     console.log(req.body);
-    const userData =   await User.updateUser(req.body.Email,req.body);
-    res.render("user/userDetail");
+    const userList =   await User.updateUser(req.body.Email,req.body);
+    req.session.user = userList;
+    res.render("user/userDetail" , {userList: userList});
 
   }catch(e){
     console.log(e);

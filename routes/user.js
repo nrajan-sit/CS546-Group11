@@ -33,14 +33,14 @@ router.post("/signUp", async (req,res)=>{
     }
 })
 
-router.get("/logout", async (req, res) => {
 
+router.get("/logout", async (req, res) => {
+  console.log("inside user.js / ")
+  //const movieTheatreList = await movieTheatreData.getMovieTheatreList();
   const userList = ""
   req.session.destroy();
   res.redirect("/");
 });
-
-
 
 router.get("/", async (req, res) => {
   console.log("inside user.js / ")
@@ -74,7 +74,7 @@ router.post("/signin", async (req, res,next) => {
 
         if (unameresult && await bcrypt.compare(pass, unameresult.Password_Hashed)) {
             console.log(unameresult, req.session);
-            
+
            let { _id,
               First_Name,
               Last_Name,

@@ -115,22 +115,23 @@ async function updateUser(Email, data) {
     First_Name: data.First_Name,
     Last_Name: data.Last_Name,
     Gender: data.Gender,
-    DOB: "",
-    Profile_Picture: "",
-    Home_Address_1: "",
-    Home_Address_2: "",
-    Home_City: "",
-    Home_State: "",
-    Home_Zip: "",
-    Phone_Number: "",
-    Credit_Card_Number_Hashed: "",
-    Expiry_Month: "",
-    Expiry_Year: "",
-    Security_Code: ""  };
+    DOB: data.DOB,
+    Profile_Picture: data.Profile_Picture,
+    Home_Address_1: data.Home_Address_1,
+    Home_Address_2: data.Home_Address_2,
+    Home_City:data.Home_City,
+    Home_State: data.Home_State,
+    Home_Zip: data.Home_Zip,
+    Phone_Number: data.Phone_Number,
+    Credit_Card_Number_Hashed: data.Credit_Card_Number_Hashed,
+    Expiry_Month: data.Expiry_Month,
+    Expiry_Year: data.Expiry_Year,
+    Security_Code:  data.Security_Code };
 
 
 
-  const newUserRecord = await userCollection.updateOne({Email: Email},{...newUser});
+  //const newUserRecord = await userCollection.updateOne({Email: Email},{$set:{...newUser}});
+  const newUserRecord  = await userCollection.findOneAndUpdate({Email: Email}, { $set: newUser }, { new: true });
 
   console.log(newUserRecord);
   if (newUserRecord.updateCount === 0)
@@ -140,8 +141,6 @@ async function updateUser(Email, data) {
   return await userCollection.findOne({Email: Email})
   //this.getUserById(newUserRecord.insertedId);
 }
-
-
 
 module.exports = {
   createUser,
