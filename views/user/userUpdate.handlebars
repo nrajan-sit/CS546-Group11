@@ -1,0 +1,59 @@
+<h2>
+  Welcome {{userList.User_Name}}
+</h2>
+<form class="userModal-content" action="/userDetail/userUpdate" method="post">
+<div class="table-responsive">
+  <h5 style="text-align:center;">Update Detail</h5>
+<table class="table align-middle"  id="userDetailTable">
+<tbody>
+<tr>
+<td>First Name</td><td><input type="text" value = {{userList.First_Name}} placeholder="Enter Username" name="First_Name"></td>
+</tr>
+<tr>
+<td>Last Name</td><td><input type="text" placeholder="Enter Username" name="Last_Name" ></td>
+</tr>
+<tr>
+<td>Email</td><td>{{userList.Email}} <input type="hidden" value = {{userList.Email}}  name="Email"></td>
+</tr>
+<tr>
+<td>Gender</td><td><input type="text" placeholder="Enter Username" name="Gender" ></td>
+</tr>
+<tr>
+<td>DOB</td><td><input type="text" placeholder="Enter Username" name="DOB" ></td>
+</tr>
+<tr>
+<td>Home_Address_1:</td><td><input type="text" placeholder="Enter Username" name="Home_Address_1" ></td>
+</tr>
+<tr>
+<td>Home_Address_2:</td><td><input type="text" placeholder="Enter Username" name="Home_Address_2"></td>
+</tr>
+<tr>
+<td>Home_City:</td><td><input type="text" placeholder="Enter Username" name="Home_City" ></td>
+</tr>
+<tr>
+<td>Home_State:</td><td><input type="text" placeholder="Enter Username" name="Home_State" ></td>
+</tr>
+<tr>
+<td>Home_Zip:</td><td><input type="text" placeholder="Enter Username" name="Home_Zip" ></td>
+</tr>
+<tr>
+<td>Phone_Number:</td><td><input type="text" placeholder="Enter Username" name="Phone_Number" ></td>
+</tr>
+<tr>
+<td>Credit_Card_Number_Hashed:</td><td><input type="text" placeholder="Enter Username" name="Credit_Card_Number_Hashed"></td>
+</tr>
+<tr>
+<td>Expiry_Month:</td><td><input type="text" placeholder="Enter Username" name="Expiry_Month" ></td>
+</tr>
+<tr>
+<td>Expiry_Year:</td><td><input type="text" placeholder="Enter Username" name="Expiry_Year" ></td>
+</tr>
+<tr>
+<td>Security_Code:</td><td>{{userList.Security_Code}}</td>
+</tr>
+
+        </tbody>
+    </table>
+<button type="submit">Update</button>
+</div>
+</form>

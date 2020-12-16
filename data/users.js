@@ -46,7 +46,7 @@ async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
 
   // hashing password before storing in DB
   //const password = bcrypt.hashSync(Password, 2);
-  const hashedPassword = await bcrypt.hash(Password, saltRounds); 
+  const hashedPassword = await bcrypt.hash(Password, saltRounds);
 
   if (existsUser_Name !== null)
     throw "The selected User_Name already exists in the system.";
@@ -93,7 +93,58 @@ async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
   //this.getUserById(newUserRecord.insertedId);
 }
 
+
+
+async function updateUser(Email, data) {
+
+  // Check user input
+  if (!data.First_Name || (typeof data.First_Name == "string" && data.First_Name.trim().length == 0))
+    throw "Please enter a valid First Name";
+  if (!data.Last_Name || (typeof data.Last_Name == "string" && data.Last_Name.trim().length == 0))
+    throw "Please enter a valid Last Name";
+
+  const userCollection = await allUsers();
+
+  // Check if the username is already taken
+  let existsEmail = await userCollection.findOne({ Email: Email});
+
+  if (!existsEmail)
+      throw "The selected Email doesn't Exist.";
+
+  let newUser = {
+    First_Name: data.First_Name,
+    Last_Name: data.Last_Name,
+    Gender: data.Gender,
+    DOB: "",
+    Profile_Picture: "",
+    Home_Address_1: "",
+    Home_Address_2: "",
+    Home_City: "",
+    Home_State: "",
+    Home_Zip: "",
+    Phone_Number: "",
+    Credit_Card_Number_Hashed: "",
+    Expiry_Month: "",
+    Expiry_Year: "",
+    Security_Code: ""  };
+
+
+
+  const newUserRecord = await userCollection.updateOne({Email: Email},{...newUser});
+
+  console.log(newUserRecord);
+  if (newUserRecord.updateCount === 0)
+    throw "User Updation failed!";
+
+  console.log(newUserRecord);
+  return await userCollection.findOne({Email: Email})
+  //this.getUserById(newUserRecord.insertedId);
+}
+
+
+
 module.exports = {
   createUser,
-  getUser
+  getUser,
+  updateUser
 };
