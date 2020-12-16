@@ -6,7 +6,7 @@
   var searchText = $("#search_term");
   // var navtab = $("navbarSupportedContent");
 
-  console.log("in em AJAX1");
+  // console.log("in em AJAX1");
 
   // $.ajax(requestConfig).then(function (responseMessage) {
 

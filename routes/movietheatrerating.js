@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  console.log("inside movie theatre details ......");
+  console.log("inside movie theatre ratings ......");
 
   let dayArray = [];
   let newDate = new Date();
@@ -49,16 +49,19 @@ router.get("/:id", async (req, res) => {
   res.render("movietheatre/movietheatrerating", {
     movieTheatreDetails: movieTheatreDetails,
   });
-  console.log("......inside movie details ......");
+  console.log("......inside movie theatre ratings ......");
 });
 
 router.post("/addReview", async (req, res) => {
   console.log("inside add review theatre ......");
   console.log(req.body);
+
   const movieDetails = await movieTheatreRating.addRating(req.body);
-  const ratingDetails = await movieTheatreRating.getRatingByTheatreId(req.body.theaterId.toString());
+  const ratingDetails = await movieTheatreRating.getRatingByTheatreId(req.body.Movie_Theatre_id);
+
   console.log("ratingDetails", ratingDetails);
   // console.log("And the movei is :- ", movieDetails);
+
   res.render("movie/moviedetails", {
     movieDetails: movieDetails,
     ratingDetails: ratingDetails,

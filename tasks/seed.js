@@ -8,6 +8,7 @@ const userData = data.users;
 const movieData = data.movies;
 const movietheatreData = data.movietheatres;
 const showtimeData = data.showtimes;
+const movietheatreratingData = data.movietheatrerating;
 
 const main = async () => {
   const db = await dbConnection();
@@ -202,7 +203,7 @@ const main = async () => {
     "2003-11-07",
     ["Adventure", "Comedy", "Family"],
     "Jon Favreau",
-    ["Will Ferrell", "James Caan", "Bob Newhart" ],
+    ["Will Ferrell", "James Caan", "Bob Newhart"],
     "PG",
     "97m",
     "After discovering he is a human, a man raised as an elf at the North Pole decides to travel to New York City to locate his real father.",
@@ -224,7 +225,7 @@ const main = async () => {
     6.2,
     0,
     []
-  );  
+  );
 
   /////////////////////////////////////////////////////////////////////////////////////////////
   //                                Movie Theatre List
@@ -282,7 +283,7 @@ const main = async () => {
     "New York",
     "NY",
     "10282",
-    [""]
+    []
   );
 
   /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3136,6 +3137,40 @@ const main = async () => {
       "20",
     ]
   );
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  //                                      Movie List
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  const user1 = await userData.createUser(
+    "John",
+    "Wick",
+    "jwick",
+    "jwick@gmail.com",
+    "Password01"
+  );
+
+  const user2 = await userData.createUser(
+    "Harry",
+    "Potter",
+    "hpotter",
+    "hpotter@gmail.com",
+    "theboywholived"
+  );
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  //                               Movie Theatre Rating/Review
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  let ratingData1 = {
+    User_id: user1._id,
+    Movie_Theatre_id : movieTheatre1._id,
+    Rating : 10,
+    Review : "The theatre was super clean and the seats were comfy!!",
+  };
+
+;
+  const movieTheatreRating1 = await movietheatreratingData.addRating(ratingData1);
+
+
 
   console.log("Done seeding database");
   await db.serverConfig.close();

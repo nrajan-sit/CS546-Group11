@@ -1,6 +1,7 @@
 const connection = require("../config/mongoCollections");
 const allUsers = connection.users;
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
+const saltRounds = 16;
 
 async function getUser(User_Name) {
 
@@ -25,7 +26,7 @@ async function getUser(User_Name) {
 
 async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
 
-    // Check user input
+  // Check user input
   if (!First_Name || (typeof First_Name == "string" && First_Name.trim().length == 0))
     throw "Please enter a valid First Name";
   if (!Last_Name || (typeof Last_Name == "string" && Last_Name.trim().length == 0))
@@ -42,7 +43,11 @@ async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
   // Check if the username is already taken
   let existsUser_Name = await userCollection.findOne({ User_Name: User_Name});
   let existsEmail = await userCollection.findOne({ Email: Email});
+
+  // hashing password before storing in DB
   //const password = bcrypt.hashSync(Password, 2);
+  const hashedPassword = await bcrypt.hash(Password, saltRounds); 
+
   if (existsUser_Name !== null)
     throw "The selected User_Name already exists in the system.";
 
@@ -53,7 +58,7 @@ async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
     First_Name: First_Name,
     Last_Name: Last_Name,
     User_Name: User_Name,
-    Password_Hashed: Password, // add salt things here
+    Password_Hashed: hashedPassword, // add salt things here
     Email: Email,
     Gender: "",
     DOB: "",
@@ -81,7 +86,7 @@ async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
   const newUserRecord = await userCollection.insertOne(newUser);
 
   if (newUserRecord.insertedCount === 0)
-    throw "Insert failed!";
+    throw "User Creation failed!";
 
   console.log(newUserRecord);
   return await userCollection.findOne(newUserRecord.insertedId)

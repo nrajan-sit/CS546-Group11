@@ -3,6 +3,9 @@ const router = express.Router();
 const movieTheatreData = require("../data/movietheatres");
 const User = require("../data/users");
 
+const bcrypt = require("bcrypt");
+const saltRounds = 16;
+
 const path = require("path");
 const app = express();
 app.use("/public", express.static(__dirname + "/public"));
@@ -19,16 +22,15 @@ router.get("/signUp", async (req, res) => {
 router.post("/signUp", async (req,res)=>{
     try{
       console.log(req.body.psw);
-  const userData =   await User.createUser(req.body.firstName, req.body.lastName, req.body.userName, req.body.email,req.body.psw );
-   res.render("user/user");
+      const userData =   await User.createUser(req.body.firstName, req.body.lastName, req.body.userName, req.body.email,req.body.psw );
+      res.render("user/user");
 
-}catch(e){
-
-  console.log(e);
-  res.status(500).json({ title: "Home page: Signup",
-          status: false,
-          message: "Error Occured"+ e})
-}
+    }catch(e){
+      console.log(e);
+      res.status(500).json({ title: "Home page: Signup",
+              status: false,
+              message: "Error Occured"+ e})
+    }
 })
 
 
@@ -50,9 +52,8 @@ router.post("/signin", async (req, res,next) => {
     if (!usersname || !pass) {
         var status="(Non-Authenticated User)";
     console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status)
-  res.render("user/user",
-  {
-
+    res.render("user/user",
+    {
         title: "Home page: Login",
         status: false,
         message: "No Username or password provided"
@@ -65,9 +66,12 @@ router.post("/signin", async (req, res,next) => {
         //passresult = User.passwordValidator(usersname, pass)
 
         if (unameresult && unameresult.Password_Hashed === pass) {
-          console.log(unameresult, req.session);
+            console.log(unameresult, req.session);
+            
             let { _id, username, firstName, lastName} = unameresult
+
             res.cookie('name', 'AuthCookie')
+
             let user = {
                 _id,
                 username,

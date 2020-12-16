@@ -16,15 +16,18 @@
     console.log("hide rating clicked")
   })
   $("#movieTheatreRatingSubmit").submit(function (event) {
-    let rating = $("#rating-theatre").val();
-    let review = $("#review-theatre").val().trim();
-    let theaterId = $("#theatreId").val().trim();
+    let Rating = $("#rating-theatre").val();
+    let Review = $("#review-theatre").val().trim();
+    let Movie_Theatre_id = $("#theatreId").val().trim();
+    // let User_id;
+
     console.log("Submit button clicked from rating");
     event.preventDefault();
     var data = {
-      rating,
-      review,
-      theaterId,
+      // User_id,
+      Rating,
+      Review,
+      Movie_Theatre_id
     };
     console.log("Data", data);
 

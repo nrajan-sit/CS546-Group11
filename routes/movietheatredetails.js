@@ -73,22 +73,28 @@ router.get("/:id", async (req, res) => {
   );
 
   const ratingDetails = await movieTheatreRating.getRatingByTheatreId(req.params.id);
-  // console.log("ratingDetails",ratingDetails)
-  let ratings = ratingDetails.map((d) => {
-    return parseInt(d.rating);
-  });
-  const sum = ratings.reduce((a, b) => a + b, 0);
-  var avg = sum / ratings.length || "N/A";
-  avg = !isNaN(avg) ? avg.toFixed(1) : avg;
-  let reviews = ratingDetails.map((d) => {
-    return d.review;
-  });
-  if (reviews.length === 0) {
-    reviews.push("N/A");
-  }
-  console.log("ratings", ratings);
-  console.log("avg", avg);
-  console.log("reviews", reviews);
+  console.log("ratingDetails",ratingDetails)
+  // let ratings = ratingDetails.map((d) => {
+  //   return parseInt(d.Rating);
+  // });
+
+  // let ratings = ratingDetails.Rating;
+  
+  // const sum = ratings.reduce((a, b) => a + b, 0);
+  // var avg = sum / ratings.length || "N/A";
+  // avg = !isNaN(avg) ? avg.toFixed(1) : avg;
+
+  // let reviews = ratingDetails.map((d) => {
+  //   return d.review;
+  // });
+
+  // if (reviews.length === 0) {
+  //   reviews.push("N/A");
+  // }
+
+  // console.log("ratings", ratings);
+  // console.log("avg", avg);
+  // console.log("reviews", reviews);
 
   res.render("movietheatre/movietheatredetails", {
     movieTheatreDetails: movieTheatreDetails,
@@ -96,10 +102,10 @@ router.get("/:id", async (req, res) => {
     movieTheatreShowtimeDetails2: finalMovieList2,
     movieTheatreShowtimeDetails3: finalMovieList3,
     timeTab: dayArray,
-    ratingDetails: {
-      avgRating: avg,
-      reviews: reviews
-    },
+    // ratingDetails: {
+    //   avgRating: avg,
+    //   reviews: reviews
+    // },
   });
   console.log("......inside movie details ......");
 });
