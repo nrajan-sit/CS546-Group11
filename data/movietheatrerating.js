@@ -99,7 +99,7 @@ async function getRatingByTheatreId(Movie_Theatre_id) {
   }); //findOne({ Movie_Name: movie });
   console.log("After finding the rating for the movietheatre", theatre);
 
-  if (!theatre) throw "Movie not found..........";
+  // if (!theatre) throw "Movie not found..........";
   return theatre;
 }
 

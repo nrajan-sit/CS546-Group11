@@ -1,3 +1,10 @@
+<br>
+<div class="top1050ind"> 
+    <a class="btn btn-outline-dark"href="./10"role="button">Top 10</a>
+    <a class="btn btn-outline-dark" href="./50" role="button">Top 50</a>
+</div>
+{{!-- <a class="btn btn-primary" href="#" role="button">Link</a> --}}
+<br>
 
 <div class="table-responsive">
     <table class="table align-middle" id="topmovieslist">
@@ -13,14 +20,14 @@
                 {{#each topMovies as | m |}}
                     <tr>
                     <td></td> {{!-- Leaving blank for ranking in CSS --}}
-                    <td><img src={{m.Movie_Poster}}> <br>{{m.Movie_Name}}<br> (Rating = {{m.User_Ratings}} )</td>
+                    <td><a href="../moviedetails/{{m._id}}"><img src={{m.Movie_Poster}}> </a><br>{{m.Movie_Name}}<br> (Rating = {{m.User_Ratings}} )</td>
                     <td></td>
                 {{/each}}
             {{else}}
                 {{#each topMovies as | m |}}
                 <tr>
                     <td></td> {{!-- Leaving blank for ranking in CSS --}}
-                    <td><img src={{m.Movie_Poster}}> <br>{{m.Movie_Name}}<br> (Rating = {{m.Critic_Ratings}} )</td>
+                    <td><a href="../moviedetails/{{m._id}}"><img src={{m.Movie_Poster}}> </a><br>{{m.Movie_Name}}<br> (Rating = {{m.Critic_Ratings}} )</td>
                     <td></td>
                     {{/each}}
             {{/ifCond}}

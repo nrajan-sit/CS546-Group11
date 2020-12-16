@@ -177,6 +177,21 @@
   content: counter(counter); /* show counter */
 }
 
+.top1050ind{
+  text-align: center;
+}
+
+.top1050ind a{
+  text-decoration: none;
+}
+
+.top1050ind button{
+  width:150px !important;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+}
+
 /* .singleMovieDetails row{
   float: right;
 } */

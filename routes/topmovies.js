@@ -2,14 +2,13 @@ const express = require("express");
 const router = express.Router();
 const topMovieData = require("../data/topmovies");
 
-router.get("/:id", async (req, res) => {
+router.get("/:id/:id2", async (req, res) => {
 
-  console.log("inside topmovies.js / ");
-  console.log("default parameter : ", req.params.id);
+  // console.log("inside topmovies.js / ", req.params);
+  // console.log("default parameter : ", req.params.id);
+  // console.log("default parameter : ", req.params.id2);
 
-  const topMovies = await topMovieData.getTopMovies(req.params.id);
-//   const topCriticMovies = await topMovieData.getTopMovies("Critic_Ratings");
-
+  const topMovies = await topMovieData.getTopMovies(req.params.id, req.params.id2);
 
   res.render("movie/topmovies", {
     topMovies: topMovies,
