@@ -1,6 +1,6 @@
 <br>
 <div class="top1050ind"> 
-    <a class="btn btn-outline-dark"href="./10"role="button">Top 10</a>
+    <a class="btn btn-outline-dark" href="./10" role="button">Top 10</a>
     <a class="btn btn-outline-dark" href="./50" role="button">Top 50</a>
 </div>
 {{!-- <a class="btn btn-primary" href="#" role="button">Link</a> --}}
@@ -20,16 +20,19 @@
                 {{#each topMovies as | m |}}
                     <tr>
                     <td></td> {{!-- Leaving blank for ranking in CSS --}}
-                    <td><a href="../moviedetails/{{m._id}}"><img src={{m.Movie_Poster}}> </a><br>{{m.Movie_Name}}<br> (Rating = {{m.User_Ratings}} )</td>
-                    <td></td>
+                    <td><a href="/moviedetails/{{m._id}}">
+                            <img src={{m.Movie_Poster}} alt="..."></a>
+                            <br>{{m.Movie_Name}}<br> (Rating = {{m.User_Ratings}})
+                    </td>
+                    </tr>
                 {{/each}}
             {{else}}
                 {{#each topMovies as | m |}}
                 <tr>
                     <td></td> {{!-- Leaving blank for ranking in CSS --}}
-                    <td><a href="../moviedetails/{{m._id}}"><img src={{m.Movie_Poster}}> </a><br>{{m.Movie_Name}}<br> (Rating = {{m.Critic_Ratings}} )</td>
-                    <td></td>
-                    {{/each}}
+                    <td><a href="/moviedetails/{{m._id}}"><img src={{m.Movie_Poster}} alt="..."> </a><br>{{m.Movie_Name}}<br> (Rating = {{m.Critic_Ratings}} )</td>
+                </tr>
+                {{/each}}
             {{/ifCond}}
 
         </tbody>

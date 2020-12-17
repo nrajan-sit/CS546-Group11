@@ -7,6 +7,8 @@ async function getTopMovies(whoseRatings, topX) {
   // console.log("inside data/topmovies.js", whoseRatings);
   const movieCollection = await allMovies();
 
+  // console.log(whoseRatings, typeof whoseRatings);
+
   if (
     !whoseRatings ||
     (typeof whoseRatings == "string" && whoseRatings.trim().length == 0) ||

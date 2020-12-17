@@ -44,12 +44,22 @@
   text-align: center;
 } 
 
+#Nowshowing{
+  font-size: 50px;
+  text-align: center;
+} 
+
 #CurrentPlayingMovie img{
   height: 345px;
   width: 233px;
   align-items: center;
 }
 
+#ComingSoonMovie img{
+  height: 345px;
+  width: 233px;
+  align-items: center;
+}
 
 /*************************************************************************
 
@@ -169,12 +179,18 @@
 }
 
 /* setup rank for movies */
-.table {
+#topmovieslist {
   counter-reset: counter; /* set counter to 0 */
 }
-.table td:first-child:before {
+#topmovieslist td:first-child:before {
   counter-increment: counter; /* increase counter */
   content: counter(counter); /* show counter */
+}
+
+#topmovieslist {
+  width: 600px!important;
+  margin-left:auto; 
+  margin-right:auto;
 }
 
 .top1050ind{
@@ -438,6 +454,7 @@ float: right;
   border-collapse: collapse;
   width: 50%;
   margin-left: 30%;
+  text-align: center;
 }
 
 #userDetailTable td, #userDetailTable th {
