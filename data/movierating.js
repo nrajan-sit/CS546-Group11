@@ -7,17 +7,23 @@ const movieTheatreData = require("./movietheatres");
 
 async function addRating(data) {
   const ratingCollection = await movieRatings();
+  const moviesCollection = await allMovies();
   //We need to require ObjectId from mongo
   let { ObjectId } = require("mongodb");
   //console.log(typeof ObjectId);
 
-  let movieId = ObjectId(data.movieId);
-  let userId = ObjectId('5fd7a040f7626f2db0517ebb');
+  let movieId = ObjectId(data.Movie_id);
+  let userId;
+  if (!data.User_id) 
+    userId = ObjectId("5fd7a040f7626f2db0517ebb");
+  else
+    userId = data.User_id;
+
   let ratingData = {
-    rating: data.rating,
-    review: data.review,
-    movieId: movieId,
-    userId: userId
+    Rating: data.Rating,
+    Review: data.Review,
+    Movie_id: movieId,
+    User_id: userId
   };
 
   let insertedRating = await ratingCollection.insertOne(ratingData);
@@ -29,6 +35,15 @@ async function addRating(data) {
   const ratingDetails = await getRatingById(ratingId);
 
   console.log(ratingDetails);
+
+  
+  // Need to push the ratingDetails._id into the Movie Theatre table's "User_Reviews" array column
+  let movieRating = await moviesCollection.updateOne(
+    { _id: movieId },
+    { $push: { User_Reviews: insertedRating.insertedId } }
+  );
+
+  // console.log(movieRating);
 
   return ratingDetails;
 }
@@ -57,6 +72,7 @@ async function getRatingById(ratingId) {
 async function getRatingByMovieId(movieId) {
   const ratingCollection = await movieRatings();
   console.log("movieId",movieId)
+  console.log("typeof movieId",typeof movieId)
   if (!movieId || (typeof movieId !== "string" && movieId.trim().length == 0))
     throw "Please enter a valid movie name 2";
 
@@ -66,7 +82,7 @@ async function getRatingByMovieId(movieId) {
 
   let newMovieId = ObjectId(movieId);
 
-  const movieID = await ratingCollection.find({ movieId: newMovieId }).toArray(); //findOne({ Movie_Name: movie });
+  const movieID = await ratingCollection.find({ Movie_id: newMovieId }).toArray(); //findOne({ Movie_Name: movie });
 
   if (!movieID) throw "Movie not found..........";
   return movieID;

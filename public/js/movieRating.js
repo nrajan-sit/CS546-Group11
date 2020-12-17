@@ -5,10 +5,15 @@
     let movieId = $("#movieId").val().trim();
     console.log("Submit button clicked from rating");
     event.preventDefault();
+    if (!review) {
+      alert("please enter your review");
+      return;
+    }
     var data = {
-      rating,
-      review,
-      movieId,
+      // User_id,
+      Rating: parseInt(rating,10),
+      Review: review,
+      Movie_id: movieId
     };
     console.log("Data", data);
     var requestConfig = {

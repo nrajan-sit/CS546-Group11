@@ -25,7 +25,7 @@
     event.preventDefault();
     var data = {
       // User_id,
-      Rating,
+      Rating: parseInt(Rating,10),
       Review,
       Movie_Theatre_id
     };

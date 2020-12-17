@@ -20,9 +20,10 @@ router.get("/:id", async (req, res) => {
   // console.log(req.params.id);
   const movieDetails = await movieData.getMovie(req.params.id);
   const ratingDetails = await movieRating.getRatingByMovieId(req.params.id);
-  // console.log("ratingDetails",ratingDetails)
+  console.log("ratingDetails",ratingDetails)
+  
   let ratings = ratingDetails.map((d) => {
-    return parseInt(d.rating);
+    return parseInt(d.Rating);
   });
 
   const sum = ratings.reduce((a, b) => a + b, 0);
@@ -38,17 +39,14 @@ router.get("/:id", async (req, res) => {
   console.log("ratings", ratings);
   console.log("avg", avg);
   console.log("reviews", reviews);
-
   // console.log("And the movei is :- ", movieDetails);
 
   const userList = req.session.user;
 
   res.render("movie/moviedetails", {
     movieDetails: movieDetails,
-    ratingDetails: {
-      avgRating: avg,
-      reviews: reviews,
-    },
+    ratingDetails: ratingDetails,
+    avgRating: avg,
     userList: userList
   });
   console.log("......inside movie details ......");

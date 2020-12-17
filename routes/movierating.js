@@ -27,10 +27,10 @@ router.get("/:id", async (req, res) => {
 
 router.post("/addReview", async (req, res) => {
   console.log("inside add review ......");
-  console.log(movieRating)
-  // console.log(req.params.id);
+  console.log(req.body)
+  req.body.Rating = parseInt(req.body.Rating, 10)
   const movieDetails = await movieRating.addRating(req.body);
-  const ratingDetails = await movieRating.getRatingByMovieId(req.body.movieId)
+  const ratingDetails = await movieRating.getRatingByMovieId(req.body.Movie_id)
   console.log("ratingDetails",ratingDetails)
   // console.log("And the movei is :- ", movieDetails);
   res.render("movie/moviedetails", { movieDetails: movieDetails, ratingDetails: ratingDetails });
