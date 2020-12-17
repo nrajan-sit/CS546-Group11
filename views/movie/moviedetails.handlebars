@@ -24,7 +24,7 @@
             <dt class=".col-6 .col-md-4">User Ratings</dt>
             <dd class=".col-md-8">
                 {{#if userList._id}}<a href="/movierating/{{movieDetails._id}}">Give Rating</a>{{else}}
-                <a href="/user">Login To Rate</a>{{/if}}
+                <a href="/user?redirect='{{currentPage}}'">Login To Rate</a>{{/if}}
                 {{!-- {{#if (userList._id)}}<a href="/movierating/{{movieDetails._id}}">Give Rating</a>{{else}}<a href="/user">Login To Rate</a>{{/if}} --}}
                 {{!-- {{#if userList._id}}
                 {{#else}}<a href="/movierating/{{movieDetails._id}}">Give Rating</a>{{/if}} --}}

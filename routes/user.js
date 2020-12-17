@@ -113,7 +113,7 @@ router.post("/signin", async (req, res,next) => {
                 ,Security_Code
                                   }
 
-            req.session.user = user
+            req.session.user = user;
             var status="(Authenticated User)";
             console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status)
             return res.redirect("/");

@@ -42,11 +42,13 @@ router.get("/:id", async (req, res) => {
   // console.log("And the movei is :- ", movieDetails);
   const userList = req.session.user;
   console.log('userList',userList)
+  const currentPage = "/moviedetails/"+req.params.id;
   res.render("movie/moviedetails", {
     movieDetails: movieDetails,
     ratingDetails: ratingDetails,
     avgRating: avg,
-    userList: userList
+    userList: userList,
+    currentPage
   });
   console.log("......inside movie details ......");
 });
