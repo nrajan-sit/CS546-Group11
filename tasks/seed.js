@@ -3157,6 +3157,14 @@ const main = async () => {
     "theboywholived"
   );
 
+  const user3 = await userData.createUser(
+    "Adonis",
+    "Johnson",
+    "creed",
+    "creed@gmail.com",
+    "apollocreed"
+  );
+
   /////////////////////////////////////////////////////////////////////////////////////////////
   //                               Movie Theatre Rating/Review
   /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3167,9 +3175,34 @@ const main = async () => {
     Review : "The theatre was super clean and the seats were comfy!!",
   };
 
-;
   const movieTheatreRating1 = await movietheatreratingData.addRating(ratingData1);
 
+  let ratingData2 = {
+    User_id: user3._id,
+    Movie_Theatre_id : movieTheatre1._id,
+    Rating : 10,
+    Review : "They have big screens and they have the best IMAX screen in town!",
+  };
+
+  const movieTheatreRating2 = await movietheatreratingData.addRating(ratingData2);
+
+  let ratingData3 = {
+    User_id: user3._id,
+    Movie_Theatre_id : movieTheatre2._id,
+    Rating : 5,
+    Review : "Its a small theatre and not the cleanest",
+  };
+
+  const movieTheatreRating3 = await movietheatreratingData.addRating(ratingData3);
+
+  let ratingData4 = {
+    User_id: user2._id,
+    Movie_Theatre_id : movieTheatre3._id,
+    Rating : 4,
+    Review : "The seats are not comfy and they need to do a better job cleaning",
+  };
+
+  const movieTheatreRating4 = await movietheatreratingData.addRating(ratingData4);
 
 
   console.log("Done seeding database");
