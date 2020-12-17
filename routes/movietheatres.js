@@ -9,8 +9,11 @@ app.use("/public", express.static(__dirname + "/public"));
 router.get("/", async (req, res) => {
   console.log("inside movietheatre.js / ");
   const movieTheatreList = await movieTheatreData.getMovieTheatreList();
+
+  const userList = req.session.user ;
   res.render("movietheatre/movietheatre", {
     movieTheatreList: movieTheatreList,
+    userList: userList,
   });
 });
 

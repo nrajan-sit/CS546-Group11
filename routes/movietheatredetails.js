@@ -96,12 +96,15 @@ router.get("/:id", async (req, res) => {
   // console.log("avg", avg);
   // console.log("reviews", reviews);
 
+  const userList = req.session.user ;
+
   res.render("movietheatre/movietheatredetails", {
     movieTheatreDetails: movieTheatreDetails,
     movieTheatreShowtimeDetails1: finalMovieList1,
     movieTheatreShowtimeDetails2: finalMovieList2,
     movieTheatreShowtimeDetails3: finalMovieList3,
     timeTab: dayArray,
+    userList: userList,
     // ratingDetails: {
     //   avgRating: avg,
     //   reviews: reviews

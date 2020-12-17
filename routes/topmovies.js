@@ -10,9 +10,12 @@ router.get("/:id/:id2", async (req, res) => {
 
   const topMovies = await topMovieData.getTopMovies(req.params.id, req.params.id2);
 
+  const userList = req.session.user ;
+
   res.render("movie/topmovies", {
     topMovies: topMovies,
-    customRating: req.params.id
+    customRating: req.params.id,
+    userList: userList
   });
 });
 

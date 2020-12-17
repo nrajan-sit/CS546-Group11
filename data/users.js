@@ -103,6 +103,24 @@ async function updateUser(Email, data) {
   if (!data.Last_Name || (typeof data.Last_Name == "string" && data.Last_Name.trim().length == 0))
     throw "Please enter a valid Last Name";
 
+  // Check Phone Number Format
+  let regex_phone = /\d\d\d-\d\d\d-\d\d\d\d/;
+
+  if (typeof data.Phone_Number == "string" && regex_phone.test(data.Phone_Number) != true)
+    throw `The value passed in "${data.Phone_Number}" is not in the right Phone_Number format (###-###-####)`;
+
+  // Credit Card Format
+  let regex_CreditCard = /\d\d\d\d-\d\d\d\d-\d\d\d\d-\d\d\d\d/;
+
+  if (typeof data.Credit_Card_Number_Hashed == "string" && regex_CreditCard.test(data.Credit_Card_Number_Hashed) != true)
+    throw `The value passed in "${data.Credit_Card_Number_Hashed}" is not in the right creditcard format (####-####-####-####)`;
+
+  // Zip Code (5 digits)
+
+  // Expiry Month (1-12)
+
+  // Expiry Year > getdate
+
   const userCollection = await allUsers();
 
   // Check if the username is already taken

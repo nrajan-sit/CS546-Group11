@@ -10,9 +10,12 @@ router.get("/", async (req, res) => {
   const currentMovies = await movieData.getCurrentPlayingMovies();
   const futureMovies = await movieData.getComingSoonMovies();
 
+  const userList = req.session.user;
+
   res.render("movie/movie", {
     currentMovies: currentMovies,
     futureMovies: futureMovies,
+    userList: userList,
   });
 });
 

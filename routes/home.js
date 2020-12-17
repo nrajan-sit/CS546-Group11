@@ -39,7 +39,7 @@ router.get("/", async (req, res) => {
     currentMovies: currentMovies,
     movieTheatreDetails : movieTheatreDetails,
     currentShowtimes: movieTheatreShowtimeDetails1,
-	userList: userList
+	  userList: userList
   });
 });
 

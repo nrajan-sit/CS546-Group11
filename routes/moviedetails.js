@@ -24,25 +24,32 @@ router.get("/:id", async (req, res) => {
   let ratings = ratingDetails.map((d) => {
     return parseInt(d.rating);
   });
+
   const sum = ratings.reduce((a, b) => a + b, 0);
   var avg = sum / ratings.length || 'N/A';
   avg = !isNaN(avg) ? avg.toFixed(1) : avg;
   let reviews = ratingDetails.map((d) => {
     return d.review;
   });
+
   if (reviews.length === 0) {
     reviews.push("N/A")
   }
   console.log("ratings", ratings);
   console.log("avg", avg);
   console.log("reviews", reviews);
+
   // console.log("And the movei is :- ", movieDetails);
+
+  const userList = req.session.user;
+
   res.render("movie/moviedetails", {
     movieDetails: movieDetails,
     ratingDetails: {
       avgRating: avg,
-      reviews: reviews
+      reviews: reviews,
     },
+    userList: userList
   });
   console.log("......inside movie details ......");
 });
