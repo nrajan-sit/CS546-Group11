@@ -13,7 +13,7 @@ app.use("/public", express.static(__dirname + "/public"));
 router.get("/", async (req, res) => {
 
   const userList = req.session.user ;
-  
+
   const movieTheatreShowtimeDetails1 = await movieData.getMovieTheatreShowtimeMovies();
 
   res.render("transaction/transaction", {
@@ -22,16 +22,22 @@ router.get("/", async (req, res) => {
   });
 });
 
-// Insert into transaction DB
-router.post("/:id", async (req, res) => {
-  console.log("inside transaction.js post / ");
+router.post("/", async (req,res)=>{
+    try{
+      console.log(req.body);
+      const userData =   await transactionData.createTransaction(req.body, req.session.user);
+      res.redirect("/");
 
-  console.log(req.body);
+    }catch(e){
+      console.log(e);
+      res.status(500).json({ title: "Home page: Signup",
+              status: false,
+              message: "Error Occured"+ e})
+    }
+})
 
-//   const searchMovie = await transactionData.getTransaction(req.params.id);
-  // console.log("inside search.js 3/ ", req.params.id);
 
-  // res.render("home/search", { searchMovie: searchMovie });
-});
+
+
 
 module.exports = router;

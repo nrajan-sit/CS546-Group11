@@ -47,29 +47,26 @@ async function getAllTransactionforUser(userID) {
 }
 
 // Insert transaction
-async function createTransaction(transactionData) {
+async function createTransaction(transactionData, session) {
     console.log("inside createTransaction/ ", transactionData);
     const showTimeCollection = await allShowtimes();
     const transactionCollection = await allTransactions();
 
-  if (
-    !User_Name ||
-    (typeof User_Name == "string" && User_Name.trim().length == 0)
-  )
-    throw "Please enter a valid UserName";
+    const Data = transactionData.moviedtl.split('||');
+    const SeatsSplit = transactionData.Seats.split('=');
+    console.log(Data);
+
 
   let newTransactionRecord = {
-    User_id: User_id,
-    Movie_Theatre_id: Movie_Theatre_id,
-    Movie_id: Movie_id,
-    Showtime_id: Showtime_id,
-    Seating_id: Seating_id,
-    Seats: Seats,
-    Cost: Cost,
-    Credit_Card: Credit_Card,
-    Credit_Card_Expiry_Month: Credit_Card_Expiry_Month,
-    Credit_Card_Expiry_Year: Credit_Card_Expiry_Year,
-    Credit_Card_Security_Code: Credit_Card_Security_Code,
+    User_Name: session.User_Name,
+    Movie_Theatre_Name: Data[0],
+    Movie_Name: Data[1],
+    Showtime_Detail: Data[2]+'/'+ Data[3],
+    Seats: SeatsSplit[0],
+    Cost: SeatsSplit[1],
+    Credit_Card: transactionData.Credit_Card,
+    Credit_Card_Expiry_Month: transactionData.Credit_Card_Expiry_Month,
+    Credit_Card_Security_Code: transactionData.CVV,
   };
 
   const newTransaction = await transactionCollection.insertOne(newTransactionRecord);
@@ -79,7 +76,7 @@ async function createTransaction(transactionData) {
 
   console.log(newTransaction);
   newTransactionID = await transactionCollection.findOne(newTransaction.insertedId);
-
+console.log("Done");
   return newTransactionID;
 }
 
