@@ -1,7 +1,10 @@
 <br>
 <div class="singleMovieTheatreDetails">
     <h5>{{movieTheatreDetails.Movie_Theatre_Name}}</h5>
-    <p class="mb-2">Been There? <a href="/movietheatrerating/{{movieTheatreDetails._id}}">Give Rating</a></p>
+    <p class="mb-2">Been There?
+        {{#if userList._id}}<a href="/movietheatrerating/{{movieTheatreDetails._id}}">Give Rating</a>{{else}}
+        <a href="/user">Login To Rate</a>{{/if}}
+    </p>
     <div class="d-flex justify-content-center">
         <button class="btn btn-primary rating-btn" id="showRating">Show Ratings</button>
         <button class="btn btn-secondary rating-btn" id="hideRating">Hide Ratings</button>

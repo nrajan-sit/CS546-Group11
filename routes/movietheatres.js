@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
   const movieTheatreList = await movieTheatreData.getMovieTheatreList();
 
   const userList = req.session.user ;
+  console.log("user inside theatre",userList)
   res.render("movietheatre/movietheatre", {
     movieTheatreList: movieTheatreList,
     userList: userList,

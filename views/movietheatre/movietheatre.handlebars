@@ -3,19 +3,17 @@
 <br>
 
 <div class="movietheatrelist">
-
-                {{#each movieTheatreList}}
-                <div class="blockquote">
-                        <a href="/movietheatredetails/{{_id}}">
+        {{#each movieTheatreList}}
+        <div class="blockquote">
+                <a href="/movietheatredetails/{{_id}}">
                         {{Movie_Theatre_Name}}
-                        </a>
-                </div>
-                <div class="mb-2">Been There? <a href="/movietheatrerating/{{_id}}">Give Rating</a></div>
-                
-                <div class="blockquote-footer">{{Address_Line_1}} {{Address_Line_2}} {{City}} {{State}} {{Zip}} <br>
-                        {{!-- <cite title="Source Title">Source Title</cite> --}}
-                </div>
+                </a>
+        </div>
 
-                {{/each}}
+        <div class="blockquote-footer">{{Address_Line_1}} {{Address_Line_2}} {{City}} {{State}} {{Zip}} <br>
+                {{!-- <cite title="Source Title">Source Title</cite> --}}
+        </div>
+
+        {{/each}}
 
 </div>
