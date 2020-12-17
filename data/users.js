@@ -111,6 +111,8 @@ async function updateUser(Email, data) {
   if (!existsEmail)
       throw "The selected Email doesn't Exist.";
 
+  let hashedCreditCard = await bcrypt.hash(data.Credit_Card_Number_Hashed, 8);
+
   let newUser = {
     First_Name: data.First_Name,
     Last_Name: data.Last_Name,
@@ -123,7 +125,7 @@ async function updateUser(Email, data) {
     Home_State: data.Home_State,
     Home_Zip: data.Home_Zip,
     Phone_Number: data.Phone_Number,
-    Credit_Card_Number_Hashed: data.Credit_Card_Number_Hashed,
+    Credit_Card_Number_Hashed: hashedCreditCard,
     Expiry_Month: data.Expiry_Month,
     Expiry_Year: data.Expiry_Year,
     Security_Code:  data.Security_Code };
