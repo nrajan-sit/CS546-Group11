@@ -28,6 +28,9 @@ router.get("/:id", async (req, res) => {
 router.post("/addReview", async (req, res) => {
   console.log("inside add review ......");
   console.log(req.body)
+  let { ObjectId } = require("mongodb");
+  const userList = req.session.user;
+  req.body.User_id = ObjectId(userList._id);
   req.body.Rating = parseInt(req.body.Rating, 10)
   const movieDetails = await movieRating.addRating(req.body);
   const ratingDetails = await movieRating.getRatingByMovieId(req.body.Movie_id)
