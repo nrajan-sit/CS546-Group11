@@ -4,6 +4,7 @@ const dbConnection = require("../config/mongoConnection");
 // const movietheatres = require("../data/");
 // const showtimes = require("../data/showtimes");
 const data = require("../data/");
+const movierating = require("../data/movierating");
 const userData = data.users;
 const movieData = data.movies;
 const movietheatreData = data.movietheatres;
@@ -28,7 +29,7 @@ const main = async () => {
     "130m",
     "In this third installment of the adrenaline-fueled action franchise, skilled assassin John Wick (Keanu Reeves) returns with a $14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin's guild, the High Table, John Wick is excommunicado, but the world's most ruthless hit men and women await his every turn.",
     10,
-    10,
+    0,
     []
   );
 
@@ -43,7 +44,7 @@ const main = async () => {
     "145m",
     "Cypher enlists the help of Jakob, Dom's younger brother to take revenge on Dom and his team.",
     10,
-    9,
+    0,
     []
   );
 
@@ -58,7 +59,7 @@ const main = async () => {
     "150m",
     "Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
     7.7,
-    7,
+    0,
     []
   );
 
@@ -3139,7 +3140,7 @@ const main = async () => {
   );
 
   /////////////////////////////////////////////////////////////////////////////////////////////
-  //                                      Movie List
+  //                                      User List
   /////////////////////////////////////////////////////////////////////////////////////////////
   const user1 = await userData.createUser(
     "John",
@@ -3204,6 +3205,37 @@ const main = async () => {
 
   const movieTheatreRating4 = await movietheatreratingData.addRating(ratingData4);
 
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  //                               Movie Rating/Review
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  
+  let movieratingData1 = {
+    User_id: user1._id,
+    Movie_id : (Tenet._id).toString(),
+    Rating : 10,
+    Review : "Nolan as usual has done it again!!!!",
+  };
+
+  const movieRating1 = await movierating.addRating(movieratingData1);
+
+  let movieratingData2 = {
+    User_id: user2._id,
+    Movie_id : (johnWick3._id).toString(),
+    Rating : 10,
+    Review : "It was a great movie and the action scenes were amazing!",
+  };
+
+  const movieRating2 = await movierating.addRating(movieratingData2);
+
+  let movieratingData3 = {
+    User_id: user3._id,
+    Movie_id : (Mulan._id).toString(),
+    Rating : 5,
+    Review : "It was just ok",
+  };
+
+  const movieRating3 = await movierating.addRating(movieratingData3);
 
   console.log("Done seeding database");
   await db.serverConfig.close();

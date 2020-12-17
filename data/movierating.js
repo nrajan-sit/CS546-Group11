@@ -4,20 +4,49 @@ const allShowtimes = mongoCollections.showtime;
 const allMovieTheatres = mongoCollections.movieTheatres;
 const movieRatings = mongoCollections.movieRatings;
 const movieTheatreData = require("./movietheatres");
+const movieData = require("../data/movies");
+
+// Re-evaluate the movie rating when a user adds a rating for a movie
+async function updateAvgMovieUserRating(movieID){
+  console.log("inside updateAvgMovieUserRating");
+
+  const moviesCollection = await allMovies();
+  const movieRatingCollection = await movieRatings();
+
+  let movieDetails = await movieData.getMovie(movieID);
+  let allRatingsforSingleMovie = await getRatingByMovieId(movieID);
+
+  if (!movieDetails) throw "The movie doesn't Exist";
+  else {
+    let totalRating = 0;
+    for (j = 0; j < allRatingsforSingleMovie.length; j++) {
+      totalRating = totalRating + allRatingsforSingleMovie[j].Rating;
+    }
+
+    let avgRating = totalRating / allRatingsforSingleMovie.length;
+
+    //We need to require ObjectId from mongo
+    let { ObjectId } = require("mongodb");
+
+    let newMovieId = ObjectId(movieID);
+
+    let movieRating = await moviesCollection.updateOne(
+      { _id: newMovieId },
+      { $set: { User_Ratings: avgRating } }
+    );
+  }
+
+}
 
 async function addRating(data) {
   const ratingCollection = await movieRatings();
   const moviesCollection = await allMovies();
+
   //We need to require ObjectId from mongo
   let { ObjectId } = require("mongodb");
-  //console.log(typeof ObjectId);
 
   let movieId = ObjectId(data.Movie_id);
-  let userId;
-  if (!data.User_id) 
-    userId = ObjectId("5fd7a040f7626f2db0517ebb");
-  else
-    userId = data.User_id;
+  let userId = data.User_id;
 
   let ratingData = {
     Rating: data.Rating,
@@ -34,8 +63,6 @@ async function addRating(data) {
 
   const ratingDetails = await getRatingById(ratingId);
 
-  console.log(ratingDetails);
-
   
   // Need to push the ratingDetails._id into the Movie Theatre table's "User_Reviews" array column
   let movieRating = await moviesCollection.updateOne(
@@ -43,14 +70,16 @@ async function addRating(data) {
     { $push: { User_Reviews: insertedRating.insertedId } }
   );
 
-  // console.log(movieRating);
+  // Update the avg user rating on the movie table since we inserted a new one
+  let updateMovieUserRating = await updateAvgMovieUserRating(data.Movie_id);
+
 
   return ratingDetails;
 }
 // get single movie rating based on ID
 async function getRatingById(ratingId) {
-  console.log("iansdasdasnd ")
-  console.log(!ratingId || (typeof ratingId !== "string" && ratingId.trim().length == 0))
+
+  // console.log(!ratingId || (typeof ratingId !== "string" && ratingId.trim().length == 0))
   // return
   const ratingCollection = await movieRatings();
 
@@ -59,7 +88,6 @@ async function getRatingById(ratingId) {
 
   //We need to require ObjectId from mongo
   let { ObjectId } = require("mongodb");
-  //console.log(typeof ObjectId);
 
   let newMovieId = ObjectId(ratingId);
 
@@ -78,7 +106,6 @@ async function getRatingByMovieId(movieId) {
 
   //We need to require ObjectId from mongo
   let { ObjectId } = require("mongodb");
-  //console.log(typeof ObjectId);
 
   let newMovieId = ObjectId(movieId);
 
