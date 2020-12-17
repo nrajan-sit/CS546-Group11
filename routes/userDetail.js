@@ -22,6 +22,17 @@ router.get("/userUpdate", async (req, res) => {
 });
 
 
+router.get("/getTrans", async (req, res) => {
+
+  const userList = req.session.user ;
+
+  //const movieTheatreList = await movieTheatreData.getMovieTheatreList();
+  const userTrans = await User.getTransaction(userList.User_Name);
+  console.log(userTrans);
+  res.render("user/userTran", {userTrans: userTrans, userList: userList});
+});
+
+
 router.post("/userUpdate", async (req, res) => {
   try{
     console.log(req.body);

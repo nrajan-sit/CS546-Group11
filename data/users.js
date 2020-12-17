@@ -1,5 +1,6 @@
 const connection = require("../config/mongoCollections");
 const allUsers = connection.users;
+const allTransaction = connection.transactions;
 const bcrypt = require("bcryptjs");
 const saltRounds = 16;
 
@@ -93,8 +94,6 @@ async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
   //this.getUserById(newUserRecord.insertedId);
 }
 
-
-
 async function updateUser(Email, data) {
 
   // Check user input
@@ -162,8 +161,21 @@ async function updateUser(Email, data) {
   //this.getUserById(newUserRecord.insertedId);
 }
 
+
+async function getTransaction(User_Name) {
+
+    const transCollection = await allTransaction();
+    const transData = await transCollection.find({ User_Name: User_Name }).toArray();
+
+    if (!transData)
+        throw "no transactions found";
+
+    return transData;
+};
+
 module.exports = {
   createUser,
   getUser,
-  updateUser
+  updateUser,
+  getTransaction
 };
