@@ -9,6 +9,7 @@ const searchRoutes = require("./search");
 const topMoviesRoutes = require("./topmovies");
 const userRoutes = require("./user");
 const userDetailRoutes = require("./userDetail");
+const transactionRoutes = require("./transaction");
 
 // const privateRoutes = require('./private');
 // const logoutRoutes = require('./logout');
@@ -29,6 +30,7 @@ const constructorMethod = (app) => {
   app.use("/topmovies", topMoviesRoutes);
   app.use("/user" , userRoutes);
   app.use("/userDetail" , userDetailRoutes);
+  app.use("/transaction", transactionRoutes);
 
   // app.use("/movies/moviedetails/:id", moviesRoutes);
   // app.use('/private', privateRoutes);
