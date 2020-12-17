@@ -20,6 +20,10 @@
   $("#movieTheatreRatingSubmit").submit(function (event) {
     let Rating = $("#rating-theatre").val();
     let Review = $("#review-theatre").val().trim();
+    if (!Review) {
+      alert("please enter your review");
+      return;
+    }
     let Movie_Theatre_id = $("#theatreId").val().trim();
     // let User_id;
 
