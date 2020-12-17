@@ -40,7 +40,6 @@ router.get("/:id", async (req, res) => {
   console.log("avg", avg);
   console.log("reviews", reviews);
   // console.log("And the movei is :- ", movieDetails);
-
   const userList = req.session.user;
 
   res.render("movie/moviedetails", {

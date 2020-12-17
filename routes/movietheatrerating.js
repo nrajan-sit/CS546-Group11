@@ -55,7 +55,7 @@ router.get("/:id", async (req, res) => {
 router.post("/addReview", async (req, res) => {
   console.log("inside add review theatre ......");
   console.log(req.body);
-
+  req.body.Rating = parseInt(req.body.Rating, 10)
   const movieDetails = await movieTheatreRating.addRating(req.body);
   const ratingDetails = await movieTheatreRating.getRatingByTheatreId(req.body.Movie_Theatre_id);
 

@@ -105,6 +105,7 @@ router.get("/:id", async (req, res) => {
     movieTheatreShowtimeDetails3: finalMovieList3,
     timeTab: dayArray,
     userList: userList,
+    ratingDetails
     // ratingDetails: {
     //   avgRating: avg,
     //   reviews: reviews

@@ -3,17 +3,19 @@
   $("#theatreRatingDiv").css("display","none")
   $("#showRating").click(function(event) {
     event.preventDefault();
-    $("#theatreRatingDiv").css("display","block")
+    // $("#theatreRatingDiv").css("display","block")
     $("#hideRating").css("display","block")
     $("#showRating").css("display","none")
     console.log("show rating clicked")
+    $("#theatreRatingDiv").slideToggle();
   })
   $("#hideRating").click(function(event) {
     event.preventDefault();
-    $("#theatreRatingDiv").css("display","none")
+    // $("#theatreRatingDiv").css("display","none")
     $("#showRating").css("display","block");
     $("#hideRating").css("display","none")
     console.log("hide rating clicked")
+    $("#theatreRatingDiv").slideToggle();
   })
   $("#movieTheatreRatingSubmit").submit(function (event) {
     let Rating = $("#rating-theatre").val();

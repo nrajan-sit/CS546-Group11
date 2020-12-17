@@ -43,7 +43,7 @@ async function addRating(data) {
 
   // Need to push the ratingDetails._id into the Movie Theatre table's "User_Reviews" array column
   let movieTheatreRatingUpdate = await movieTheatreCollection.updateOne(
-    { _id: data.Movie_Theatre_id },
+    { _id: ObjectId(data.Movie_Theatre_id) },
     { $push: { User_Reviews: insertedRating.insertedId } }
   );
 
@@ -94,9 +94,9 @@ async function getRatingByTheatreId(Movie_Theatre_id) {
 
   let newtheatreId = ObjectId(Movie_Theatre_id);
 
-  const theatre = await ratingCollection.findOne({
+  const theatre = await ratingCollection.find({
     Movie_Theatre_id: newtheatreId,
-  }); //findOne({ Movie_Name: movie });
+  }).toArray(); //findOne({ Movie_Name: movie });
   console.log("After finding the rating for the movietheatre", theatre);
 
   // if (!theatre) throw "Movie not found..........";

@@ -12,13 +12,17 @@
         <dl>
             <dt class=".col-6 .col-md-4">User Ratings</dt>
             <dd class=".col-md-8">
-                {{ratingDetails.avgRating}}
+                <ul>
+                    {{#each ratingDetails}}
+                    <li>{{Rating}}</li>
+                    {{/each}}
+                </ul>
             </dd>
             <dt class=".col-6 .col-md-4">User Reviews</dt>
             <dd class=".col-md-8">
                 <ul>
-                    {{#each ratingDetails.reviews}}
-                    <li>{{this}}</li>
+                    {{#each ratingDetails}}
+                    <li>{{Review}}</li>
                     {{/each}}
                 </ul>
             </dd>
