@@ -17,7 +17,7 @@ app.use("/public", express.static(__dirname + "/public"));
 // });
 
 router.get("/:id", async (req, res) => {
-  console.log("inside movie theatre details ......");
+  // console.log("inside movie theatre details ......");
   // console.log(req.params.id);
 
   // Get the dates for the Tabs
@@ -73,7 +73,7 @@ router.get("/:id", async (req, res) => {
   );
 
   const ratingDetails = await movieTheatreRating.getRatingByTheatreId(req.params.id);
-  console.log("ratingDetails",ratingDetails)
+  // console.log("ratingDetails",ratingDetails)
   // let ratings = ratingDetails.map((d) => {
   //   return parseInt(d.Rating);
   // });
@@ -111,7 +111,7 @@ router.get("/:id", async (req, res) => {
     //   reviews: reviews
     // },
   });
-  console.log("......inside movie details ......");
+  // console.log("......inside movie details ......");
 });
 
 module.exports = router;

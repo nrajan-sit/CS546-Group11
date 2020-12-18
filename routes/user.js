@@ -12,7 +12,7 @@ app.use("/public", express.static(__dirname + "/public"));
 
 
 router.get("/signUp", async (req, res) => {
-  console.log("inside user.js / ")
+  // console.log("inside user.js / get /signUp")
   //const movieTheatreList = await movieTheatreData.getMovieTheatreList();
   const userList = ""
   res.render("user/signUp", {userList: userList});
@@ -20,13 +20,14 @@ router.get("/signUp", async (req, res) => {
 
 
 router.post("/signUp", async (req,res)=>{
+    // console.log("inside user.js / post /signUp");
     try{
       console.log(req.body.psw);
       const userData =   await User.createUser(req.body.firstName, req.body.lastName, req.body.userName, req.body.email,req.body.psw );
       res.render("user/user");
 
     }catch(e){
-      console.log(e);
+      // console.log(e);
       res.status(500).json({ title: "Home page: Signup",
               status: false,
               message: "Error Occured"+ e})
@@ -35,7 +36,7 @@ router.post("/signUp", async (req,res)=>{
 
 
 router.get("/logout", async (req, res) => {
-  console.log("inside user.js / ")
+  // console.log("inside user.js / get /logout")
   //const movieTheatreList = await movieTheatreData.getMovieTheatreList();
   const userList = ""
   req.session.destroy();
@@ -43,37 +44,42 @@ router.get("/logout", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  console.log("inside user.js / ")
+  // console.log("inside user.js / get /")
   //const movieTheatreList = await movieTheatreData.getMovieTheatreList();
   const userList = ""
   res.render("user/user", {userList: userList});
 });
 
 
-router.post("/signin", async (req, res,next) => {
+router.post("/", async (req, res,next) => {
+    // console.log("inside user.js / get /signin");
     let usersname = req.body.uname;
     let pass = req.body.psw
     let unameresult, passresult
-    console.log("here");
+    // console.log("here");
     try{
-    if (!usersname || !pass) {
+      if (!usersname || !pass) {
         var status="(Non-Authenticated User)";
-    console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status)
-    res.render("user/user",
-    {
+
+      // console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status,"well1")
+      
+      res.render("user/user",
+      {
         title: "Home page: Login",
         status: false,
         message: "No Username or password provided"
 
-    })}
+      })}
 
-    else {
-      //  unameresult = User.usernameValidator(usersname);
+      else {
+
         unameresult = await User.getUser(usersname);
-        //passresult = User.passwordValidator(usersname, pass)
+
+        if(!unameresult)
+          throw "Username doesn't exist"
 
         if (unameresult && await bcrypt.compare(pass, unameresult.Password_Hashed)) {
-            console.log(unameresult, req.session);
+            // console.log(unameresult, req.session);
 
            let { _id,
               First_Name,
@@ -115,12 +121,12 @@ router.post("/signin", async (req, res,next) => {
 
             req.session.user = user;
             var status="(Authenticated User)";
-            console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status)
+            // console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status)
             return res.redirect("/");
         }
         else {
             var status="(Non-Authenticated User)";
-            console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status)
+            // console.log("["+ new Date().toUTCString()+"]"+":"+ req.method,req.originalUrl,status,"well2")
             res.render("user/user",
                 {
                     title: "Home page: Login",
@@ -132,10 +138,19 @@ router.post("/signin", async (req, res,next) => {
         }
 
 
-    }
+      }
 
 }
-catch(e){console.log(e);}
+catch(e){
+  //console.log(e);
+  res.render("user/user",
+                {
+                    title: "Home page: Login",
+                    status: false,
+                    message: "The provided username and password is invalid !!"
+
+                });
+}
 });
 
 module.exports = router;

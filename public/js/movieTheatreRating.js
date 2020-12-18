@@ -6,7 +6,7 @@
     // $("#theatreRatingDiv").css("display","block")
     $("#hideRating").css("display","block")
     $("#showRating").css("display","none")
-    console.log("show rating clicked")
+    // console.log("show rating clicked")
     $("#theatreRatingDiv").slideToggle();
   })
   $("#hideRating").click(function(event) {
@@ -14,7 +14,7 @@
     // $("#theatreRatingDiv").css("display","none")
     $("#showRating").css("display","block");
     $("#hideRating").css("display","none")
-    console.log("hide rating clicked")
+    // console.log("hide rating clicked")
     $("#theatreRatingDiv").slideToggle();
   })
   $("#movieTheatreRatingSubmit").submit(function (event) {
@@ -27,7 +27,7 @@
     let Movie_Theatre_id = $("#theatreId").val().trim();
     // let User_id;
 
-    console.log("Submit button clicked from rating");
+    // console.log("Submit button clicked from rating");
     event.preventDefault();
     var data = {
       // User_id,
@@ -35,7 +35,7 @@
       Review,
       Movie_Theatre_id
     };
-    console.log("Data", data);
+    // console.log("Data", data);
 
     var requestConfig = {
       method: "POST",

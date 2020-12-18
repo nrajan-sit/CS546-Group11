@@ -26,7 +26,7 @@ async function getMovie(movie) {
 
 // get single movie based on name  // need to test this 
 async function getMovieName(movieName) {
-  console.log("Inside getMovieName ");
+  // console.log("Inside getMovieName ");
   const movieCollection = await allMovies();
 
   if (!movieName || (typeof movieName == "string" && movieName.trim().length == 0))
@@ -126,7 +126,7 @@ async function getMovieTheatreShowtimeMovies() {
 // This is not working yet..... need to fix this for main page showtimes
 async function getMovieTheatreShowtimeMoviesv2() {
 
-  console.log("inside getMovieTheatreShowtimeMoviesv2");
+  // console.log("inside getMovieTheatreShowtimeMoviesv2");
   const showtimeCollection = await allShowtimes();
   const movieCollection = await allMovies();
   const movieTheatreCollection = await allMovieTheatres();
@@ -145,11 +145,11 @@ async function getMovieTheatreShowtimeMoviesv2() {
   for(i=0;i<movieTheatreDetails.length;i++){
     movieTheatreName = movieTheatreDetails[i].Movie_Theatre_Name;
     show = await movieTheatreData.createMovieTheatreWithShowTimes(movieTheatreDetails[i]._id, dayArray[0]);
-    console.log("-----------------")
-    console.log(movieTheatreName);
-    console.log("-----------------");
-    console.log(show)
-    console.log("---------------->")
+    // console.log("-----------------")
+    // console.log(movieTheatreName);
+    // console.log("-----------------");
+    // console.log(show)
+    // console.log("---------------->")
     showtimesForToday.push(show);
   }
     // console.log(showtimesForToday);

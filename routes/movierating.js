@@ -8,36 +8,36 @@ const { route } = require("./home");
 const app = express();
 app.use("/public", express.static(__dirname + "/public"));
 
-router.get("/", async (req, res) => {
-  console.log("inside movie rating do nothing");
+// router.get("/", async (req, res) => {
+  // console.log("inside movie rating do nothing");
   // console.log(req.params.id);
   // const currentMovies = await movieData.getMovie(req.params.id);
   // console.log("And the movei is :- ", currentMovies);
   // res.render("movie/moviedetails", { currentMovies: currentMovies });
-});
+// });
 
 router.get("/:id", async (req, res) => {
-  console.log("inside movie details ......");
+  // console.log("inside movie details ......");
   // console.log(req.params.id);
   const movieDetails = await movieData.getMovie(req.params.id);
   // console.log("And the movei is :- ", movieDetails);
   res.render("movie/movierating", { movieDetails: movieDetails });
-  console.log("......inside movie details ......");
+  // console.log("......inside movie details ......");
 });
 
 router.post("/addReview", async (req, res) => {
-  console.log("inside add review ......");
-  console.log(req.body)
+  // console.log("inside add review ......");
+  // console.log(req.body)
   let { ObjectId } = require("mongodb");
   const userList = req.session.user;
   req.body.User_id = ObjectId(userList._id);
   req.body.Rating = parseInt(req.body.Rating, 10)
   const movieDetails = await movieRating.addRating(req.body);
   const ratingDetails = await movieRating.getRatingByMovieId(req.body.Movie_id)
-  console.log("ratingDetails",ratingDetails)
+  // console.log("ratingDetails",ratingDetails)
   // console.log("And the movei is :- ", movieDetails);
   res.render("movie/moviedetails", { movieDetails: movieDetails, ratingDetails: ratingDetails });
-  console.log("......inside add review ......");
+  // console.log("......inside add review ......");
 });
 
 module.exports = router;

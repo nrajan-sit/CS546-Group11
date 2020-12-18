@@ -23,7 +23,7 @@
   
   /***************************** Search Form Submission *****************************/
   searchLink.submit(function (event) {
-    console.log("Submit button clicked");
+    // console.log("Submit button clicked");
     event.preventDefault();
     // movieSearchList.show();
     body.hide();
@@ -79,93 +79,4 @@
   });
 
 
-  // navtab.on('click', "nav-item", function () {
-  //     console.log("NAV TAB CLICKED");
-  //     event.preventDefault();
-
-  // });
-
-  /***************************** Link Clicked *****************************/
-  // showList.on('click', "a", function () {
-
-  //     // console.log("Show Link clicked");
-  //     event.preventDefault();
-  //     var currentShow = $(this).attr("href");
-  //     // var currentLink = $(this);
-  //     // console.log(currentLink);
-  //     // var currentId = currentLink.data();
-  //     // console.log(currentId);
-  //     // console.log($(this).attr('href'));
-
-  //     var requestConfig = {
-  //         method: 'GET',
-  //         url: currentShow
-  //     };
-
-  //     $.ajax(requestConfig).then(function (responseMessage) {
-
-  //         var singleShowDetail = $(responseMessage);
-
-  //         // console.log("Show details ->");
-  //         // console.log(singleShowDetail[0]);
-  //         let showDeets = singleShowDetail[0];
-
-  //         let singleShowDetailNEW_temp = {
-  //           ShowName: replaceNULL(showDeets.name),
-  //           image: replaceNULLimage(showDeets.image),
-  //           language: replaceNULL(showDeets.language),
-  //           genres: replaceNULL(showDeets.genres),
-  //           averageRating: replaceNULL(showDeets.rating), //.average,
-  //           networkName: replaceNULL(showDeets.network), //.name,
-  //           summary: replaceNULL(showDeets.summary),
-  //         };
-
-  //         // console.log("before")
-  //         let singleShowDetailNEW = singleShowDetailNEW_temp
-  //         // console.log("after");
-  //         // console.log(singleShowDetailNEW);
-  //         // console.log(singleShowDetailNEW.ShowName);
-
-  //         //showList.toggle(); // hide showlist element
-  //         showList.hide();
-  //         showDetail.empty(); // empty the show element
-
-  //         // setup genres
-  //         let genreArr = "<ul>";
-  //         if(!singleShowDetailNEW_temp.genres || singleShowDetailNEW_temp.genres.length == 0)
-  //             genreArr = "N/A"
-  //         else{
-  //             for (i = 0; i < singleShowDetailNEW_temp.genres.length; i++)
-  //                 genreArr = genreArr + "<li>" + singleShowDetailNEW_temp.genres[i] + "</li>";
-  //             genreArr = genreArr + "</ul>";
-  //         }
-
-  //         // setup image
-  //         let imagesrc = "";
-  //         if (!singleShowDetailNEW_temp.image.medium)
-  //             imagesrc = "/public/js/no_image.jpeg"
-  //         else
-  //             imagesrc = singleShowDetailNEW_temp.image.medium
-
-  //         showDetail.append("<h1> " + singleShowDetailNEW.ShowName + "</h1>");
-  //         showDetail.append("<img src=" + imagesrc +">");
-  //         showDetail.append(
-  //           "<dl> <dt>Language</dt> <dd>" +
-  //             singleShowDetailNEW.language +
-  //             "</dd><dt>Genres</dt> <dd>" +
-  //             genreArr +
-  //             "</dd><dt>Average Rating</dt> <dd>" +
-  //             replaceNULL(singleShowDetailNEW.averageRating.average) +
-  //             "</dd><dt>Network Name</dt> <dd>" +
-  //             replaceNULL(singleShowDetailNEW.networkName.name) +
-  //             "</dd><dt>Summary</dt> <dd>" +
-  //             singleShowDetailNEW.summary +
-  //             "</dd> </dl>"
-  //         );
-
-  //         showList.hide();
-  //         homeLink.show();
-  //         showDetail.show();
-  //     });
-  // })
 })(window.jQuery);

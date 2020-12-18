@@ -4,13 +4,14 @@
     <form class="row-cols-md-3 d-flex justify-content-center" id="movieRatingSubmit" method="post">
         <div class="box">
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Rating</label>
+                <label for="rating">Rating</label>
                 <select class="form-control" id="rating" required>
+                    <option value="">-- Please choose a Rating --</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                    <option value="5" selected>5</option>
+                    <option value="5">5</option>
                     <option value="6">6</option>
                     <option value="7">7</option>
                     <option value="8">8</option>
@@ -19,7 +20,7 @@
                 </select>
             </div>
             <div class="form-group mt-2">
-                <label for="exampleInputPassword1">Review</label>
+                <label for="review">Review</label>
                 <textarea class="form-control" required maxlength="1000" id="review" rows="3"></textarea>
             </div>
             <input type="text" name="movieId" id="movieId" hidden value="{{movieDetails._id}}">

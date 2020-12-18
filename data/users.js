@@ -8,7 +8,7 @@ async function getUser(User_Name) {
 
     if (!User_Name || (typeof User_Name == "string" && User_Name.trim().length == 0))
         throw "Please enter a valid UserName";
-    console.log(User_Name);
+    // console.log(User_Name);
     const userCollection = await allUsers();
 
     //We need to require ObjectId from mongo
@@ -89,7 +89,7 @@ async function createUser(First_Name, Last_Name, User_Name, Email, Password) {
   if (newUserRecord.insertedCount === 0)
     throw "User Creation failed!";
 
-  console.log(newUserRecord);
+  // console.log(newUserRecord);
   return await userCollection.findOne(newUserRecord.insertedId)
   //this.getUserById(newUserRecord.insertedId);
 }
@@ -114,7 +114,12 @@ async function updateUser(Email, data) {
   if (typeof data.Credit_Card_Number_Hashed == "string" && regex_CreditCard.test(data.Credit_Card_Number_Hashed) != true)
     throw `The value passed in "${data.Credit_Card_Number_Hashed}" is not in the right creditcard format (####-####-####-####)`;
 
+  // Zip Code Format
+  let regex_ZipCode = /\d\d\d\d\d/;
+
   // Zip Code (5 digits)
+  if (typeof data.Home_Zip == "string" && regex_ZipCode.test(data.Home_Zip) != true)
+    throw `The value passed in "${data.Home_Zip}" is not in the right creditcard format (####-####-####-####)`;
 
   // Expiry Month (1-12)
 
@@ -152,11 +157,11 @@ async function updateUser(Email, data) {
   //const newUserRecord = await userCollection.updateOne({Email: Email},{$set:{...newUser}});
   const newUserRecord  = await userCollection.findOneAndUpdate({Email: Email}, { $set: newUser }, { new: true });
 
-  console.log(newUserRecord);
+  // console.log(newUserRecord);
   if (newUserRecord.updateCount === 0)
     throw "User Updation failed!";
 
-  console.log(newUserRecord);
+  // console.log(newUserRecord);
   return await userCollection.findOne({Email: Email})
   //this.getUserById(newUserRecord.insertedId);
 }

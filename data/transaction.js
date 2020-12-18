@@ -9,7 +9,7 @@ const saltRounds = 16;
 
 // get 1 transaction
 async function getTransaction(transactionID) {
-    console.log("inside getTransaction transactionID/ ", transactionID);
+    // console.log("inside getTransaction transactionID/ ", transactionID);
     const transactionCollection = await allTransactions();
 
   if (
@@ -30,7 +30,7 @@ async function getTransaction(transactionID) {
 
 // get all transactions for user
 async function getAllTransactionforUser(userID) {
-    console.log("inside getTransaction userID/ ", userID);
+    // console.log("inside getTransaction userID/ ", userID);
     const transactionCollection = await allTransactions();
 
   if (!userID || (typeof userID == "string" && userID.trim().length == 0))
@@ -48,20 +48,42 @@ async function getAllTransactionforUser(userID) {
 
 // Insert transaction
 async function createTransaction(transactionData, session) {
-    console.log("inside createTransaction/ ", transactionData);
+    // console.log("inside createTransaction/ ", transactionData);
     const showTimeCollection = await allShowtimes();
     const transactionCollection = await allTransactions();
 
     const Data = transactionData.moviedtl.split('||');
     const SeatsSplit = transactionData.Seats.split('=');
-    console.log(Data);
+    // console.log(Data);
+    // console.log(SeatsSplit);
+
+  // Check user input
+  if (!Data || (typeof Data == "string" && First_Name.trim().length == 0))
+    throw "Please select a showtime of your choosing";
+
+  if (!SeatsSplit[0] || (typeof SeatsSplit[0] == "string" && SeatsSplit[0].trim().length == 0))
+    throw "Please select the number of tickets";
+
+  if (!transactionData.Credit_Card_Expiry_Month || 
+    (typeof transactionData.Credit_Card_Expiry_Month == "string" && transactionData.Credit_Card_Expiry_Month.trim().length == 0))
+    throw "Please Enter an Expiry of the Credit Card";
+
+  if (!transactionData.CVV || 
+    (typeof transactionData.CVV == "string" && transactionData.CVV.trim().length == 0))
+    throw "Please Enter the Security COde";
+
+  // Credit Card Format
+  let regex_CreditCard = /\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d\d/;
+
+  if (typeof transactionData.Credit_Card == "string" && regex_CreditCard.test(transactionData.Credit_Card) != true)
+    throw `The value passed in "${transactionData.Credit_Card}" is not in the right creditcard format (####-####-####-####)`;
 
 
   let newTransactionRecord = {
     User_Name: session.User_Name,
     Movie_Theatre_Name: Data[0],
     Movie_Name: Data[1],
-    Showtime_Detail: Data[2]+'/'+ Data[3],
+    Showtime_Detail: Data[2]+' @ '+ Data[3],
     Seats: SeatsSplit[0],
     Cost: SeatsSplit[1],
     Credit_Card: transactionData.Credit_Card,
@@ -74,9 +96,9 @@ async function createTransaction(transactionData, session) {
   if (newTransaction.insertedCount === 0)
     throw "Transaction failed!";
 
-  console.log(newTransaction);
+  // console.log(newTransaction);
   newTransactionID = await transactionCollection.findOne(newTransaction.insertedId);
-console.log("Done");
+// console.log("Done");
   return newTransactionID;
 }
 

@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
   const movieTheatreDetails = await movieTheatreData.getMovieTheatreList();
   const movieTheatreShowtimeDetails1 = await movieData.getMovieTheatreShowtimeMoviesv2();
 
-  console.log('movieTheatreShowtimeDetails1',movieTheatreShowtimeDetails1);
+  // console.log('movieTheatreShowtimeDetails1',movieTheatreShowtimeDetails1);
   
   // added for enable disable User Link
   

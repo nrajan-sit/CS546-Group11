@@ -24,13 +24,13 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req,res)=>{
     try{
-      console.log(req.body);
+      // console.log(req.body);
       const userData =   await transactionData.createTransaction(req.body, req.session.user);
       res.redirect("/");
 
     }catch(e){
-      console.log(e);
-      res.status(500).json({ title: "Home page: Signup",
+      // console.log(e);
+      res.status(500).json({ title: "Checkout : Checking out ticket",
               status: false,
               message: "Error Occured"+ e})
     }

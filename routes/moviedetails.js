@@ -7,20 +7,20 @@ const path = require("path");
 const app = express();
 app.use("/public", express.static(__dirname + "/public"));
 
-router.get("/", async (req, res) => {
-  console.log("inside movie details do nothing");
-  // console.log(req.params.id);
-  // const currentMovies = await movieData.getMovie(req.params.id);
-  // console.log("And the movei is :- ", currentMovies);
-  // res.render("movie/moviedetails", { currentMovies: currentMovies });
-});
+// router.get("/", async (req, res) => {
+//   console.log("inside movie details do nothing");
+//   // console.log(req.params.id);
+//   // const currentMovies = await movieData.getMovie(req.params.id);
+//   // console.log("And the movei is :- ", currentMovies);
+//   // res.render("movie/moviedetails", { currentMovies: currentMovies });
+// });
 
 router.get("/:id", async (req, res) => {
-  console.log("inside movie details ......");
+  // console.log("inside movie details ......");
   // console.log(req.params.id);
   const movieDetails = await movieData.getMovie(req.params.id);
   const ratingDetails = await movieRating.getRatingByMovieId(req.params.id);
-  console.log("ratingDetails",ratingDetails)
+  // console.log("ratingDetails",ratingDetails)
   
   let ratings = ratingDetails.map((d) => {
     return parseInt(d.Rating);
@@ -36,12 +36,12 @@ router.get("/:id", async (req, res) => {
   if (reviews.length === 0) {
     reviews.push("N/A")
   }
-  console.log("ratings", ratings);
-  console.log("avg", avg);
-  console.log("reviews", reviews);
+  // console.log("ratings", ratings);
+  // console.log("avg", avg);
+  // console.log("reviews", reviews);
   // console.log("And the movei is :- ", movieDetails);
   const userList = req.session.user;
-  console.log('userList',userList)
+  // console.log('userList',userList)
   const currentPage = "/moviedetails/"+req.params.id;
   res.render("movie/moviedetails", {
     movieDetails: movieDetails,
@@ -50,7 +50,7 @@ router.get("/:id", async (req, res) => {
     userList: userList,
     currentPage
   });
-  console.log("......inside movie details ......");
+  // console.log("......inside movie details ......");
 });
 
 module.exports = router;

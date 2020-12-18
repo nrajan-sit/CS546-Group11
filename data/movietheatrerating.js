@@ -39,7 +39,7 @@ async function addRating(data) {
 
   const ratingDetails = await getRatingById(ratingId);
 
-  console.log(ratingDetails);
+  // console.log(ratingDetails);
 
   // Need to push the ratingDetails._id into the Movie Theatre table's "User_Reviews" array column
   let movieTheatreRatingUpdate = await movieTheatreCollection.updateOne(
@@ -47,7 +47,7 @@ async function addRating(data) {
     { $push: { User_Reviews: insertedRating.insertedId } }
   );
 
-  console.log(movieTheatreRatingUpdate);
+  // console.log(movieTheatreRatingUpdate);
 
   return ratingDetails;
 }
@@ -55,8 +55,8 @@ async function addRating(data) {
 
 // get single movie rating based on ID
 async function getRatingById(ratingId) {
-  console.log("iansdasdasnd ")
-  console.log(!ratingId || (typeof ratingId !== "string" && ratingId.trim().length == 0))
+  // console.log("iansdasdasnd ")
+  // console.log(!ratingId || (typeof ratingId !== "string" && ratingId.trim().length == 0))
   // return
   const ratingCollection = await movieTheatreRatings();
 
@@ -79,7 +79,7 @@ async function getRatingByTheatreId(Movie_Theatre_id) {
   // console.log("theatreId1", Movie_Theatre);
   const ratingCollection = await movieTheatreRatings();
 
-  console.log("theatreId2", Movie_Theatre_id);
+  // console.log("theatreId2", Movie_Theatre_id);
 
   if (
     !Movie_Theatre_id ||
@@ -97,7 +97,7 @@ async function getRatingByTheatreId(Movie_Theatre_id) {
   const theatre = await ratingCollection.find({
     Movie_Theatre_id: newtheatreId,
   }).toArray(); //findOne({ Movie_Name: movie });
-  console.log("After finding the rating for the movietheatre", theatre);
+  // console.log("After finding the rating for the movietheatre", theatre);
 
   // if (!theatre) throw "Movie not found..........";
   return theatre;

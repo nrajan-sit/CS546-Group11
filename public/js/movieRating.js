@@ -3,7 +3,7 @@
     let rating = $("#rating").val();
     let review = $("#review").val().trim();
     let movieId = $("#movieId").val().trim();
-    console.log("Submit button clicked from rating");
+    // console.log("Submit button clicked from rating");
     event.preventDefault();
     if (!review) {
       alert("please enter your review");
@@ -15,7 +15,7 @@
       Review: review,
       Movie_id: movieId
     };
-    console.log("Data", data);
+    // console.log("Data", data);
     var requestConfig = {
       method: "POST",
       url: "http://localhost:3000/movierating/addReview",

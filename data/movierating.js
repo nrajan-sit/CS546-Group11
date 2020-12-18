@@ -8,7 +8,7 @@ const movieData = require("../data/movies");
 
 // Re-evaluate the movie rating when a user adds a rating for a movie
 async function updateAvgMovieUserRating(movieID){
-  console.log("inside updateAvgMovieUserRating");
+  // console.log("inside updateAvgMovieUserRating");
 
   const moviesCollection = await allMovies();
   const movieRatingCollection = await movieRatings();
@@ -99,8 +99,8 @@ async function getRatingById(ratingId) {
 
 async function getRatingByMovieId(movieId) {
   const ratingCollection = await movieRatings();
-  console.log("movieId",movieId)
-  console.log("typeof movieId",typeof movieId)
+  // console.log("movieId",movieId)
+  // console.log("typeof movieId",typeof movieId)
   if (!movieId || (typeof movieId !== "string" && movieId.trim().length == 0))
     throw "Please enter a valid movie name 2";
 
