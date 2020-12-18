@@ -52,7 +52,8 @@
             {{#each movieTheatreShowtimeDetails1}}
             <br>
             <h2>{{Movie_Name}}</h2>
-            <img src={{Movie_Poster}} alt="movie_logo">
+            <a href="/moviedetails/{{_id}}">
+                <img src={{Movie_Poster}} alt="movie_logo"></a>
             {{#each MovieDetails}}
             {{!-- {{Date}} --}}
             <button type="button" class="btn btn-outline-primary">{{Time}}</button>
@@ -68,7 +69,8 @@
             {{#each movieTheatreShowtimeDetails2}}
             <br>
             <h2>{{Movie_Name}}</h2>
-            <img src={{Movie_Poster}} alt="movie_logo">
+            <a href="/moviedetails/{{_id}}">
+                <img src={{Movie_Poster}} alt="movie_logo"></a>
             {{#each MovieDetails}}
             {{!-- {{Date}} --}}
             <button type="button" class="btn btn-outline-primary">{{Time}}</button>
@@ -85,7 +87,8 @@
             {{#each movieTheatreShowtimeDetails3}}
             <br>
             <h2>{{Movie_Name}}</h2>
-            <img src={{Movie_Poster}} alt="movie_logo">
+            <a href="/moviedetails/{{_id}}">
+                <img src={{Movie_Poster}} alt="movie_logo"></a>
             {{#each MovieDetails}}
             {{!-- {{Date}} --}}
             <button type="button" class="btn btn-outline-primary">{{Time}}</button>
