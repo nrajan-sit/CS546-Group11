@@ -17,5 +17,7 @@ Step 3 : npm start
 The server should be at http://localhost:3000/
 
 Here are details for an existing user :-
+
 Username : jwick
+
 Password : Password01
