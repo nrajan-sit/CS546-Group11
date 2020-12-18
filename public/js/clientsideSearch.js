@@ -66,7 +66,7 @@
             // console.log('hello')
             // console.log(singleMovie.Movie_Name);
             movieSearchList.append(
-              `<li id="searchimage"> <a href = /moviedetails/${singleMovie._id}> <img src=${singleMovie.Movie_Poster}></a> ${singleMovie.Movie_Name}</li> <br>`
+              `<li id="searchimage"> <a href = /moviedetails/${singleMovie._id}> <img src=${singleMovie.Movie_Poster} alt="movie_logo"></a> ${singleMovie.Movie_Name}</li> <br>`
             );
           });
       });

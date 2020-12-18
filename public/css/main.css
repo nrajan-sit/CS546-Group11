@@ -62,6 +62,10 @@
   align-items: center;
 }
 
+.card-title {
+  font-size: 17px;
+}
+
 /*************************************************************************
 
                               Movie Details Page
@@ -69,7 +73,7 @@
 /************************************************************************/
 /****** Movie details page******/
 
-.singleMovieDetails h5{
+.singleMovieDetails h1{
   font-size: 50px;
   font-weight: bold;
   text-align: center;
@@ -110,14 +114,14 @@
   padding: 2em;
 }
 
-.singleMovieTheatreDetails h5{
+.singleMovieTheatreDetails h1{
   font-size: 50px;
   font-weight: bold;
   text-align: center;
 }
 
 
-.singleMovieTheatreDetails h6{
+.singleMovieTheatreDetails h2{
   font-size: 25px;
   font-weight: bold;
 }
@@ -353,7 +357,7 @@ float: right;
   margin-top: 0 !important;
 }
 .theatre-ratings {
-  background-color: coral !important;
+  background-color: #be4d00 !important;
   color: whitesmoke;
   padding: 1em;
   margin-bottom: 1em;

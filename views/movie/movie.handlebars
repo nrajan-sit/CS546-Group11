@@ -1,5 +1,5 @@
 <br> <br>
-<h4 id="Nowshowing"> Now Showing </h4>
+<h1 id="Nowshowing"> Now Showing </h4>
 <br>
 
 <div class="row row-cols-1 row-cols-md-3 g-4" id="CurrentPlayingMovie">
@@ -7,10 +7,10 @@
         <div class="col">
                 <div class="card text-center">
                         <a href="moviedetails/{{_id}}">
-                                <img src={{Movie_Poster}} class="card-img-top" alt="..."></a>
+                                <img src={{Movie_Poster}} class="card-img-top" alt="movie_logo"></a>
                         <div class="card-body">
                                 <div class="MovieTitleFont">
-                                        <h5 class="card-title">{{Movie_Name}}</h5>
+                                        <h2 class="card-title">{{Movie_Name}}</h2>
                                 </div>
                         </div>
                 </div>
@@ -19,17 +19,17 @@
 </div>
 
 <br> <br>
-<h4 id="Comingsoon"> Coming Soon </h4>
+<h3 id="Comingsoon"> Coming Soon </h3>
 <br>
 <div class="row row-cols-1 row-cols-md-3 g-4" id="ComingSoonMovie">
         {{#each futureMovies}}
         <div class="col">
                 <div class="card text-center">
                         <a href="moviedetails/{{_id}}">
-                                <img src={{Movie_Poster}} class="card-img-top" alt="..."></a>
+                                <img src={{Movie_Poster}} class="card-img-top" alt="movie_logo"></a>
                         <div class="card-body">
                                 <div class="MovieTitleFont">
-                                        <h5 class="card-title">{{Movie_Name}}</h5>
+                                        <h2 class="card-title">{{Movie_Name}}</h5>
                                 </div>
                                 <p class="card-title"> { {{Release_Date}} }</p>
                         </div>
